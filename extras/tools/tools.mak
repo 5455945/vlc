@@ -84,7 +84,7 @@ libtool: libtool-$(LIBTOOL_VERSION).tar.gz
 	$(UNPACK)
 	$(MOVE)
 
-.libtool: libtool
+.libtool: libtool .automake
 	(cd $<; ./configure --prefix=$(PREFIX) && $(MAKE) && $(MAKE) install)
 	ln -sf libtool $(PREFIX)/bin/glibtool
 	ln -sf libtoolize $(PREFIX)/bin/glibtoolize
@@ -247,6 +247,23 @@ sed: sed-$(SED_VERSION).tar.bz2
 CLEAN_PKG += sed
 DISTCLEAN_PKG += sed-$(SED_VERSION).tar.bz2
 CLEAN_FILE += .sed
+
+# Apache ANT
+
+apache-ant-$(ANT_VERSION).tar.bz2:
+	$(call download,$(ANT_URL))
+
+ant: apache-ant-$(ANT_VERSION).tar.bz2
+	$(UNPACK)
+	$(MOVE)
+
+.ant: ant
+	(cp $</bin/* build/bin/; cp $</lib/* build/lib/)
+	touch $@
+
+CLEAN_PKG += ant
+DISTCLEAN_PKG += apache-ant-$(ANT_VERSION).tar.bz2
+CLEAN_FILE += .ant
 
 #
 #

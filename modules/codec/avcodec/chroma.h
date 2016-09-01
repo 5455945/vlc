@@ -2,7 +2,7 @@
  * chroma.h: decoder and encoder using libavcodec
  *****************************************************************************
  * Copyright (C) 2001-2008 VLC authors and VideoLAN
- * $Id$
+ * $Id: d7ef4eff61dbbbd082c85dad060d888b89085e9b $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

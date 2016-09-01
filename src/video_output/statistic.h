@@ -2,7 +2,7 @@
  * statistic.h : vout statistic
  *****************************************************************************
  * Copyright (C) 2009 Laurent Aimar
- * $Id$
+ * $Id: 083b0d7aa74f1c8c5cf0dba1c67c5d6febb272db $
  *
  * Authors: Laurent Aimar <fenrir _AT_ videolan _DOT_ org>
  *

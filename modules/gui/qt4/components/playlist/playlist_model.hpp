@@ -2,7 +2,7 @@
  * playlist_model.hpp : Model for a playlist tree
  ****************************************************************************
  * Copyright (C) 2006-2011 the VideoLAN team
- * $Id$
+ * $Id: f9d1d0c3b32bae40c8ba1ed255bbf7bbecbc2339 $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *          Jakob Leben <jleben@videolan.org>
@@ -157,7 +157,7 @@ private:
 
 private slots:
     void processInputItemUpdate( input_item_t *);
-    void processInputItemUpdate( input_thread_t* p_input );
+    void processInputItemUpdate();
     void processItemRemoval( int i_pl_itemid );
     void processItemAppend( int i_pl_itemid, int i_pl_itemidparent );
     void activateItem( playlist_item_t *p_item );

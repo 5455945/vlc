@@ -2,7 +2,7 @@
  * avcodec.h: decoder and encoder using libavcodec
  *****************************************************************************
  * Copyright (C) 2001-2013 VLC authors and VideoLAN
- * $Id$
+ * $Id: 3fc14dc163885eb5ac80d955e3159a506f0dcfed $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *          Jean-Baptiste Kempf <jb@videolan.org>
@@ -512,11 +512,6 @@ enum {
 #define LIBAVFORMAT_VERSION_CHECK( a, b, c, d, e ) \
     ( (LIBAVFORMAT_VERSION_MICRO <  100 && LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT( a, b, c ) ) || \
       (LIBAVFORMAT_VERSION_MICRO >= 100 && LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT( a, d, e ) ) )
-
-#if LIBAVFORMAT_VERSION_MAJOR < 54
-# define AVDictionaryEntry AVMetadataTag
-# define av_dict_get av_metadata_get
-#endif
 
 #endif
 

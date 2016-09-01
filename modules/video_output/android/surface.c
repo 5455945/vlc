@@ -73,7 +73,9 @@ vlc_module_end()
  * JNI prototypes
  *****************************************************************************/
 
-extern JavaVM *myVm;
+#define THREAD_NAME "AndroidSurface"
+extern int jni_attach_thread(JNIEnv **env, const char *thread_name);
+extern void jni_detach_thread();
 extern void *jni_LockAndGetAndroidSurface();
 extern jobject jni_LockAndGetAndroidJavaSurface();
 extern void  jni_UnlockAndroidSurface();
@@ -173,6 +175,11 @@ static void *InitLibrary(vout_display_sys_t *sys)
 static int Open(vlc_object_t *p_this)
 {
     vout_display_t *vd = (vout_display_t *)p_this;
+    video_format_t fmt;
+    video_format_ApplyRotation(&fmt, &vd->fmt);
+
+    if (fmt.i_chroma == VLC_CODEC_ANDROID_OPAQUE)
+        return VLC_EGENERIC;
 
     /* */
     if (vlc_mutex_trylock(&single_instance) != 0) {
@@ -200,11 +207,6 @@ static int Open(vlc_object_t *p_this)
     }
 
     /* Setup chroma */
-    video_format_t fmt = vd->fmt;
-
-    if (fmt.i_chroma == VLC_CODEC_ANDROID_OPAQUE)
-        return VLC_EGENERIC;
-
     char *psz_fcc = var_InheritString(vd, CFG_PREFIX "chroma");
     if( psz_fcc ) {
         fmt.i_chroma = vlc_fourcc_GetCodecFromString(VIDEO_ES, psz_fcc);
@@ -370,9 +372,9 @@ static int  AndroidLockSurface(picture_t *picture)
         sys->jsurf = jsurf;
         if (!sys->window) {
             JNIEnv *p_env;
-            (*myVm)->AttachCurrentThread(myVm, &p_env, NULL);
+            jni_attach_thread(&p_env, THREAD_NAME);
             sys->window = sys->native_window.winFromSurface(p_env, jsurf);
-            (*myVm)->DetachCurrentThread(myVm);
+            jni_detach_thread();
         }
         // Using sys->window instead of the native surface object
         // as parameter to the unlock function
@@ -388,7 +390,11 @@ static int  AndroidLockSurface(picture_t *picture)
 
     if (sys->native_window.winLock) {
         ANativeWindow_Buffer buf = { 0 };
-        sys->native_window.winLock(sys->window, &buf, NULL);
+        int32_t err = sys->native_window.winLock(sys->window, &buf, NULL);
+        if (err) {
+            jni_UnlockAndroidSurface();
+            return VLC_EGENERIC;
+        }
         info->w      = buf.width;
         info->h      = buf.height;
         info->bits   = buf.bits;

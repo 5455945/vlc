@@ -2,7 +2,7 @@
  * rar.h: uncompressed RAR parser
  *****************************************************************************
  * Copyright (C) 2008-2010 Laurent Aimar
- * $Id$
+ * $Id: 889309fa20b787f16fe5ead302fac275f8093a0e $
  *
  * Author: Laurent Aimar <fenrir _AT_ videolan _DOT_ org>
  *

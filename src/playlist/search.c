@@ -2,7 +2,7 @@
  * search.c : Search functions
  *****************************************************************************
  * Copyright (C) 1999-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 0c711ca9ac61fc2045de1be3fc4e0586632f5d0a $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *

@@ -2,7 +2,7 @@
  * dialogProvider.m: iOS Dialog Provider
  *****************************************************************************
  * Copyright (C) 2009, 2014 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8b9e1f80835b06f94fb2255094bfcd99c51db5bc $
  *
  * Authors: Felix Paul Kühne <fkuehne # videolan org>
  *          Pierre d'Herbemont <pdherbemont # videolan org>

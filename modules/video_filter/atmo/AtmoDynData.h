@@ -4,7 +4,7 @@
  *
  * See the README.txt file for copyright information and how to reach the author(s).
  *
- * $Id$
+ * $Id: 9a798a165357ef54d03dd15e5976896eca2ec848 $
  */
 #ifndef _AtmoDynData_h_
 #define _AtmoDynData_h_

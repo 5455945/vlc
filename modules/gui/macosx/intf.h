@@ -2,7 +2,7 @@
  * intf.h: MacOS X interface module
  *****************************************************************************
  * Copyright (C) 2002-2014 VLC authors and VideoLAN
- * $Id$
+ * $Id: db5baccdbcb119f3a1a78c00049b4bb5447eb48f $
  *
  * Authors: Jon Lech Johansen <jon-vl@nanocrew.net>
  *          Derk-Jan Hartman <hartman at videolan dot org>
@@ -57,6 +57,7 @@ vout_thread_t *getVout(void);
 vout_thread_t *getVoutForActiveWindow(void);
 audio_output_t *getAout(void);
 
+static NSString * VLCInputChangedNotification = @"VLCInputChangedNotification";
 
 /*****************************************************************************
  * VLCMain interface
@@ -104,6 +105,7 @@ audio_output_t *getAout(void);
     BOOL b_mediaKeySupport;
     BOOL b_mediakeyJustJumped;
     SPMediaKeyTap * o_mediaKeyController;
+    BOOL b_mediaKeyTrapEnabled;
 
     NSArray *o_usedHotkeys;
 
@@ -151,6 +153,7 @@ audio_output_t *getAout(void);
 - (BOOL)hasDefinedShortcutKey:(NSEvent *)o_event force:(BOOL)b_force;
 
 - (void)PlaylistItemChanged;
+- (void)plItemUpdated;
 - (void)playbackStatusUpdated;
 - (void)sendDistributedNotificationWithUpdatedPlaybackStatus;
 - (void)playbackModeUpdated;
@@ -171,6 +174,8 @@ audio_output_t *getAout(void);
 - (void)mediaKeyTap:(SPMediaKeyTap*)keyTap receivedMediaKeyEvent:(NSEvent*)event;
 
 - (void)resetAndReinitializeUserDefaults;
+
+- (BOOL)isTerminating;
 
 @end
 

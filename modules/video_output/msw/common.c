@@ -2,7 +2,7 @@
  * common.c: Windows video output common code
  *****************************************************************************
  * Copyright (C) 2001-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: fbf790c8a9241884ba0379c1388159e492276f5a $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *

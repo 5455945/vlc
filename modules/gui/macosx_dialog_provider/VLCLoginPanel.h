@@ -2,7 +2,7 @@
  * VLCLoginPanel.h: A Generic Login Panel created for VLC
  *****************************************************************************
  * Copyright (C) 2009-2010 VLC authors and VideoLAN
- * $Id$
+ * $Id: 766aeca9e4902d4b2d7b0d8964e128d068e48778 $
  *
  * Authors: Felix Paul Kühne <fkuehne at videolan dot org>
  *

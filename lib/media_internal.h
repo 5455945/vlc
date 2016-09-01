@@ -3,7 +3,7 @@
  * Also contains some internal utility functions
  *****************************************************************************
  * Copyright (C) 2005-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 9301e320eaeff5d8ea6f206b1a06b9d9961599f3 $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *

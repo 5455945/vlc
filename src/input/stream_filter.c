@@ -2,7 +2,7 @@
  * stream_filter.c
  *****************************************************************************
  * Copyright (C) 2008 Laurent Aimar
- * $Id$
+ * $Id: adcfb5891769e01494e5dcf2253eb76317f9c8e2 $
  *
  * Author: Laurent Aimar <fenrir _AT_ videolan _DOT_ org>
  *

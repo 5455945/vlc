@@ -2,7 +2,7 @@
  * atmo.cpp : "Atmo Light" video filter
  *****************************************************************************
  * Copyright (C) 2000-2006 VLC authors and VideoLAN
- * $Id$
+ * $Id: 518e2c5aee10ff393ebf7aa498b17d56f2c29458 $
  *
  * Authors: André Weber (WeberAndre@gmx.de)
  *

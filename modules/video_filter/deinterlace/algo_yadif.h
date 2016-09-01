@@ -2,7 +2,7 @@
  * algo_yadif.h : Wrapper for FFmpeg's Yadif algorithm
  *****************************************************************************
  * Copyright (C) 2000-2011 the VideoLAN team
- * $Id$
+ * $Id: d1ff76f8175c01afe74d1222a9ab671ba32f188f $
  *
  * Author: Laurent Aimar <fenrir@videolan.org>
  *         Juha Jeronen  <juha.jeronen@jyu.fi> (soft field repeat hack)

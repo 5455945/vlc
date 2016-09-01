@@ -2,7 +2,7 @@
  * extensions_manager.cpp: Extensions manager for Cocoa
  ****************************************************************************
  * Copyright (C) 2009-2012 VideoLAN and authors
- * $Id$
+ * $Id: 6286757a29fc39bbb7b56148781524f1644853ec $
  *
  * Authors: Brendon Justin <brendonjustin@gmail.com>,
  *          Jean-Philippe André < jpeg # videolan.org >

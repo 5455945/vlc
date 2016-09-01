@@ -2,7 +2,7 @@
  * interface_widgets.cpp : Custom widgets for the main interface
  ****************************************************************************
  * Copyright (C) 2006-2010 the VideoLAN team
- * $Id$
+ * $Id: 8c30ac02124b13f486c7a7d1375dbd79de44c907 $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *          Jean-Baptiste Kempf <jb@videolan.org>
@@ -51,6 +51,10 @@
 #include <QSlider>
 #include <QBitmap>
 #include <QUrl>
+
+#ifdef QT5_HAS_X11
+# define Q_WS_X11
+#endif
 
 #ifdef Q_WS_X11
 #   include <X11/Xlib.h>
@@ -476,12 +480,10 @@ SpeedLabel::SpeedLabel( intf_thread_t *_p_intf, QWidget *parent )
     /* Change the SpeedRate in the Label */
     CONNECT( THEMIM->getIM(), rateChanged( float ), this, setRate( float ) );
 
-    DCONNECT( THEMIM, inputChanged( input_thread_t * ),
+    DCONNECT( THEMIM, inputChanged( ),
               speedControl, activateOnState() );
 
-    setFrameStyle( QFrame::StyledPanel | QFrame::Raised );
-    setLineWidth( 1 );
-
+    setContentsMargins(4, 0, 4, 0);
     setRate( var_InheritFloat( THEPL, "rate" ) );
 }
 

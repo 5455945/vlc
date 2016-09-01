@@ -4,7 +4,7 @@
  * Copyright (C) 2003-2004, 2010 VLC authors and VideoLAN
  * Copyright © 2007 Rémi Denis-Courmont
  *
- * $Id$
+ * $Id: 0939d5e05ef3b2a2c5856c4e52f1b4ee0ce9e54e $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *          Pierre Ynard

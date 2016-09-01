@@ -2,7 +2,7 @@
  * input_manager.hpp : Manage an input and interact with its GUI elements
  ****************************************************************************
  * Copyright (C) 2006-2008 the VideoLAN team
- * $Id$
+ * $Id: b69b6f930b13712b282f6a1a18374c127b8730f0 $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *          Jean-Baptiste <jb@videolan.org>
@@ -154,6 +154,7 @@ private:
     input_item_t   *p_item;
     int             i_old_playing_status;
     QString         oldName;
+    QString         lastURI;
     QString         artUrl;
     float           f_rate;
     float           f_cache;
@@ -183,8 +184,10 @@ private:
     void UpdateProgramEvent();
     void UpdateEPG();
 
+    void setInput( input_thread_t * );
+
 public slots:
-    void setInput( input_thread_t * ); ///< Our controlled input changed
+    void inputChangedHandler(); ///< Our controlled input changed
     void sliderUpdate( float ); ///< User dragged the slider. We get new pos
     /* SpeedRate Rate Management */
     void reverse();
@@ -221,6 +224,8 @@ signals:
     void titleChanged( bool );
     void chapterChanged( bool );
     void inputCanSeek( bool );
+    /// You can resume playback
+    void resumePlayback( int64_t );
     /// Statistics are updated
     void statisticsUpdated( input_item_t* );
     void infoChanged( input_item_t* );
@@ -309,7 +314,7 @@ private slots:
     void menusUpdateAudio( const QString& );
 
 signals:
-    void inputChanged( input_thread_t * );
+    void inputChanged( );
     void volumeChanged( float );
     void soundMuteChanged( bool );
     void playlistItemAppended( int itemId, int parentId );

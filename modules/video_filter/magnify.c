@@ -2,7 +2,7 @@
  * magnify.c : Magnify/Zoom interactive effect
  *****************************************************************************
  * Copyright (C) 2005-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 9df90a9cbb94232b771d0732f5398ffc3252c584 $
  *
  * Authors: Antoine Cellerier <dionoea -at- videolan -dot- org>
  *

@@ -2,7 +2,7 @@
  * tls.c
  *****************************************************************************
  * Copyright © 2004-2007 Rémi Denis-Courmont
- * $Id$
+ * $Id: 8874e70382d5dbdecd17d6ccdf440160874b7291 $
  *
  * Authors: Rémi Denis-Courmont <rem # videolan.org>
  *

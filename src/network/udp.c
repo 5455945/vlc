@@ -4,7 +4,7 @@
  * Copyright (C) 2004-2006 VLC authors and VideoLAN
  * Copyright © 2006-2007 Rémi Denis-Courmont
  *
- * $Id$
+ * $Id: d33b13a11f0c5d2498e68b60a114f3a15a2fabb6 $
  *
  * Authors: Laurent Aimar <fenrir@videolan.org>
  *          Rémi Denis-Courmont <rem # videolan.org>
@@ -97,6 +97,23 @@ static int net_SetupDgramSocket (vlc_object_t *p_obj, int fd,
 #endif
 
 #if defined (_WIN32)
+
+    /* Check windows version so we know if we need to increase receive buffers
+     * for Windows 7 and earlier
+
+     * SetSocketMediaStreamingMode is present in win 8 and later, so we set
+     * receive buffer if that isn't present
+     */
+    HINSTANCE h_Network = LoadLibraryW(L"Windows.Networking.dll");
+    if( (h_Network == NULL) ||
+        (GetProcAddress( h_Network, "SetSocketMediaStreamingMode" ) == NULL ) )
+    {
+        setsockopt (fd, SOL_SOCKET, SO_RCVBUF,
+                         (void *)&(int){ 0x80000 }, sizeof (int));
+    }
+    if( h_Network )
+        FreeLibrary( h_Network );
+
     if (net_SockAddrIsMulticast (ptr->ai_addr, ptr->ai_addrlen)
      && (sizeof (struct sockaddr_storage) >= ptr->ai_addrlen))
     {
@@ -294,7 +311,9 @@ net_SourceSubscribe (vlc_object_t *obj, int fd,
                      const struct sockaddr *src, socklen_t srclen,
                      const struct sockaddr *grp, socklen_t grplen)
 {
-#ifdef MCAST_JOIN_SOURCE_GROUP
+/* MCAST_JOIN_SOURCE_GROUP was introduced to OS X in v10.7, but it doesn't work,
+ * so ignore it to use the same code path as on 10.5 or 10.6 */
+#if defined (MCAST_JOIN_SOURCE_GROUP) && !defined (__APPLE__)
     /* Agnostic SSM multicast join */
     int level;
     struct group_source_req gsr;

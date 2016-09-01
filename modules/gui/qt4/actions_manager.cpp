@@ -2,7 +2,7 @@
  * actions_manager.cpp : Controller for the main interface
  ****************************************************************************
  * Copyright © 2009-2014 VideoLAN and VLC authors
- * $Id$
+ * $Id: eff40d9039f79c4e89f0ca75c665d5d0018880f1 $
  *
  * Authors: Jean-Baptiste Kempf <jb@videolan.org>
  *
@@ -34,6 +34,7 @@
 #include "input_manager.hpp"         /* THEMIM */
 #include "main_interface.hpp"        /* Show playlist */
 #include "components/controller.hpp" /* Toggle FSC controller width */
+#include "components/extended_panels.hpp"
 
 ActionsManager::ActionsManager( intf_thread_t * _p_i )
 {
@@ -201,3 +202,11 @@ void ActionsManager::skipBackward()
         THEMIM->getIM()->jumpBwd();
 }
 
+void ActionsManager::PPaction( QAction *a )
+{
+    int i_q = -1;
+    if( a != NULL )
+        i_q = a->data().toInt();
+
+    ExtVideo::setPostprocessing( p_intf, i_q );
+}

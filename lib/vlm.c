@@ -2,7 +2,7 @@
  * vlm.c: libvlc new API VLM handling functions
  *****************************************************************************
  * Copyright (C) 2005 VLC authors and VideoLAN
- * $Id$
+ * $Id: aad066bc77f6ebaac8972e28005602bbff32aa6b $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *

@@ -2,7 +2,7 @@
  * hevc.c: h.265/hevc video packetizer
  *****************************************************************************
  * Copyright (C) 2014 VLC authors and VideoLAN
- * $Id$
+ * $Id: a905f8f7025d2615adc65d59242f981e3dfa590d $
  *
  * Authors: Denis Charmet <typx@videolan.org>
  *

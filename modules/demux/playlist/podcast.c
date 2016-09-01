@@ -2,7 +2,7 @@
  * podcast.c : podcast playlist imports
  *****************************************************************************
  * Copyright (C) 2005-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: b0c44d9a59f1ee345758505d907d65058ad0dc14 $
  *
  * Authors: Antoine Cellerier <dionoea -at- videolan -dot- org>
  *

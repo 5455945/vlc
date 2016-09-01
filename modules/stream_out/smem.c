@@ -2,7 +2,7 @@
  * smem.c: stream output to memory buffer module
  *****************************************************************************
  * Copyright (C) 2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 791f9f86aa20e2d080cdcf0b7d047c40f9f41a23 $
  *
  * Authors: Christophe Courtaut <christophe.courtaut@gmail.com>
  *

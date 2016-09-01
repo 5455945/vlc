@@ -2,7 +2,7 @@
  * algo_ivtc.c : IVTC (inverse telecine) algorithm for the VLC deinterlacer
  *****************************************************************************
  * Copyright (C) 2010-2011 the VideoLAN team
- * $Id$
+ * $Id: 35f920beebdeeaff6fc174e241cfbe1477b51fcb $
  *
  * Author: Juha Jeronen <juha.jeronen@jyu.fi>
  *

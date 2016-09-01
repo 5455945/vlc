@@ -2,7 +2,7 @@
  * playlist_fetcher.h:
  *****************************************************************************
  * Copyright (C) 1999-2008 VLC authors and VideoLAN
- * $Id$
+ * $Id: c7d9c2d7f868df98016dd1cfe188fe85e5411fe6 $
  *
  * Authors: Samuel Hocevar <sam@zoy.org>
  *          Clément Stenac <zorglub@videolan.org>

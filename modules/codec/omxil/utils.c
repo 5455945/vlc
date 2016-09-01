@@ -2,7 +2,7 @@
  * utils.c: helper functions
  *****************************************************************************
  * Copyright (C) 2010 VLC authors and VideoLAN
- * $Id$
+ * $Id: af050c3a857bb905446aaa6fdbaa1fa95a38ac0a $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *

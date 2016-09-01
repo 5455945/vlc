@@ -2,7 +2,7 @@
  * sout_widgets.hpp : Widgets for stream output destination boxes
  ****************************************************************************
  * Copyright (C) 2009 the VideoLAN team
- * $Id$
+ * $Id: a03c32fe96cd84a1a353f56af87b10624c4c9359 $
  *
  * Authors: Jean-Baptiste Kempf <jb@videolan.org>
  *

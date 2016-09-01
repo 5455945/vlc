@@ -2,7 +2,7 @@
  * aiff.c: Audio Interchange File Format demuxer
  *****************************************************************************
  * Copyright (C) 2004-2007 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8a7dd28b1828ae798395f79e167c7a09a56ef90b $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

@@ -2,7 +2,7 @@
  * vlc_aout_volume.h: audio volume module
  *****************************************************************************
  * Copyright (C) 2002-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 051413ba105d5f7ee552679bf7fcd3a053db112c $
  *
  * Authors: Christophe Massiot <massiot@via.ecp.fr>
  *          Laurent Aimar <fenrir _AT_ videolan _DOT_ org>

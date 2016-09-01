@@ -2,7 +2,7 @@
  * dummy.c: dummy stream output module
  *****************************************************************************
  * Copyright (C) 2003-2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 5142757ff0e893b73f0f0f8cfcaa16499e790184 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

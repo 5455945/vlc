@@ -2,7 +2,7 @@
  * playlist_preparser.h:
  *****************************************************************************
  * Copyright (C) 1999-2008 VLC authors and VideoLAN
- * $Id$
+ * $Id: 54b276fcc8b3e7e7b773b2f579049eea98cf4bff $
  *
  * Authors: Samuel Hocevar <sam@zoy.org>
  *          Clément Stenac <zorglub@videolan.org>

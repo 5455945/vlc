@@ -2,7 +2,7 @@
  * input_manager.cpp : Manage an input and interact with its GUI elements
  ****************************************************************************
  * Copyright (C) 2006-2008 the VideoLAN team
- * $Id$
+ * $Id: 8283fdc247f736c062bd994641a4fafb7e898217 $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *          Ilkka Ollakka  <ileoo@videolan.org>
@@ -99,6 +99,11 @@ InputManager::~InputManager()
     delInput();
 }
 
+void InputManager::inputChangedHandler()
+{
+    setInput( THEMIM->getInput() );
+}
+
 /* Define the Input used.
    Add the callbacks on input
    p_input is held once here */
@@ -122,24 +127,26 @@ void InputManager::setInput( input_thread_t *_p_input )
         p_item = input_GetItem( p_input );
         emit rateChanged( var_GetFloat( p_input, "rate" ) );
 
+        char *uri = input_item_GetURI( p_item );
+
         /* Get Saved Time */
-        int i_time = RecentsMRL::getInstance( p_intf )->time( p_item->psz_uri );
-        if( i_time > 0 &&
-            !var_GetFloat( p_input, "run-time" ) &&
-            !var_GetFloat( p_input, "start-time" ) &&
-            !var_GetFloat( p_input, "stop-time" ) )
+        if( p_item->i_type == ITEM_TYPE_FILE )
         {
-            playlist_Pause( THEPL );
-
-            if( QMessageBox::question( NULL,
-                        _("Continue playback?"),
-                        _("Do you want to restart the playback where left off?"),
-                        QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes )
-                    == QMessageBox::Yes )
-                var_SetTime( p_input, "time", (int64_t)i_time * 1000 );
-
-            playlist_Play( THEPL );
+            int i_time = RecentsMRL::getInstance( p_intf )->time( qfu(uri) );
+            if( i_time > 0 && qfu( uri ) != lastURI &&
+                    !var_GetFloat( p_input, "run-time" ) &&
+                    !var_GetFloat( p_input, "start-time" ) &&
+                    !var_GetFloat( p_input, "stop-time" ) )
+            {
+                emit resumePlayback( (int64_t)i_time * 1000 );
+            }
         }
+
+        // Save the latest URI to avoid asking to restore the
+        // position on the same input file.
+        lastURI = qfu( uri );
+        RecentsMRL::getInstance( p_intf )->addRecent( lastURI );
+        free( uri );
     }
     else
     {
@@ -158,13 +165,18 @@ void InputManager::delInput()
     msg_Dbg( p_intf, "IM: Deleting the input" );
 
     /* Save time / position */
-    float f_pos = var_GetFloat( p_input , "position" );
-    int64_t i_time = var_GetTime( p_input, "time");
-    int i_length = var_GetTime( p_input , "length" ) / CLOCK_FREQ;
-    if( f_pos < 0.05 || f_pos > 0.95 || i_length < 60) {
-        i_time = -1;
+    char *uri = input_item_GetURI( p_item );
+    if( uri != NULL ) {
+        float f_pos = var_GetFloat( p_input , "position" );
+        int64_t i_time = -1;
+
+        if( f_pos >= 0.05f && f_pos <= 0.95f
+         && var_GetTime( p_input, "length" ) >= 60 * CLOCK_FREQ )
+            i_time = var_GetTime( p_input, "time");
+
+        RecentsMRL::getInstance( p_intf )->setTime( qfu(uri), i_time );
+        free(uri);
     }
-    RecentsMRL::getInstance( p_intf )->setTime( p_item->psz_uri, i_time );
 
     delCallbacks();
     i_old_playing_status = END_S;
@@ -235,7 +247,7 @@ void InputManager::customEvent( QEvent *event )
         if( p_item == ple->item() )
         {
             UpdateStatus();
-            // UpdateName();
+            UpdateName();
             UpdateArt();
             UpdateMeta();
             /* Update duration of file */
@@ -1017,13 +1029,13 @@ MainInputManager::MainInputManager( intf_thread_t *_p_intf )
     mute.addCallback( this, SLOT(notifyMute(bool)) );
 
     /* Warn our embedded IM about input changes */
-    DCONNECT( this, inputChanged( input_thread_t * ),
-              im, setInput( input_thread_t * ) );
+    DCONNECT( this, inputChanged(),
+              im, inputChangedHandler() );
 
     /* initialize p_input (an input can already be running) */
     p_input = playlist_CurrentInput( THEPL );
     if( p_input )
-        emit inputChanged( p_input );
+        emit inputChanged( );
 
     /* Audio Menu */
     menusAudioMapper = new QSignalMapper();
@@ -1034,8 +1046,9 @@ MainInputManager::~MainInputManager()
 {
     if( p_input )
     {
-       emit inputChanged( NULL );
        vlc_object_release( p_input );
+       p_input = NULL;
+       emit inputChanged( );
     }
 
     var_DelCallback( THEPL, "activity", PLItemChanged, this );
@@ -1090,13 +1103,14 @@ void MainInputManager::customEvent( QEvent *event )
     if( p_input != NULL )
         vlc_object_release( p_input );
     p_input = playlist_CurrentInput( THEPL );
-    emit inputChanged( p_input );
+    emit inputChanged( );
 }
 
 /* Playlist Control functions */
 void MainInputManager::stop()
 {
    playlist_Stop( THEPL );
+   getIM()->lastURI.clear();
 }
 
 void MainInputManager::next()

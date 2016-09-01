@@ -2,7 +2,7 @@
  * common.c : audio output management of common data structures
  *****************************************************************************
  * Copyright (C) 2002-2007 VLC authors and VideoLAN
- * $Id$
+ * $Id: f92230ec0d051c521e37b196021e03cfd973c0b3 $
  *
  * Authors: Christophe Massiot <massiot@via.ecp.fr>
  *

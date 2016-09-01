@@ -2,7 +2,7 @@
  * win32text.c : Text drawing routines using the TextOut win32 API
  *****************************************************************************
  * Copyright (C) 2002 - 2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: f759085bf1b4673fae8eec3b1d0f64bfab9b8fdb $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *          Pierre Ynard

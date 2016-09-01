@@ -2,7 +2,7 @@
  * filter_chain.c : Handle chains of filter_t objects.
  *****************************************************************************
  * Copyright (C) 2008 VLC authors and VideoLAN
- * $Id$
+ * $Id: 63fbb0f1ec3a40ad754f27c8522dae2a958fc4a8 $
  *
  * Author: Antoine Cellerier <dionoea at videolan dot org>
  *

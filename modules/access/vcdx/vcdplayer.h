@@ -1,6 +1,6 @@
 /*****************************************************************************
  * Copyright (C) 2003, 2004 Rocky Bernstein (for VLC authors and VideoLAN)
- * $Id$
+ * $Id: 122060e8a5ad358d43d4d0886885d8ec78fbc74e $
  *
  * Authors: Rocky Bernstein <rocky@panix.com>
  *

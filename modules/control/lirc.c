@@ -2,7 +2,7 @@
  * lirc.c : lirc module for vlc
  *****************************************************************************
  * Copyright (C) 2003-2005 the VideoLAN team
- * $Id$
+ * $Id: 94841071398aea3b5dbdcd66589bfad41938f37c $
  *
  * Author: Sigmund Augdal Helberg <dnumgis@videolan.org>
  *

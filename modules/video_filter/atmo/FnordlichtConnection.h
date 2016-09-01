@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *
- * $Id$
+ * $Id: e3452e8efbc8aa6ca547cbe049d64bdacf3b9208 $
  */
 #ifndef _FnordlichtConnection_h_
 #define _FnordlichtConnection_h_

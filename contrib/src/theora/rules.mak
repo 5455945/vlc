@@ -16,6 +16,8 @@ $(TARBALLS)/libtheora-$(THEORA_VERSION).tar.xz:
 
 libtheora: libtheora-$(THEORA_VERSION).tar.xz .sum-theora
 	$(UNPACK)
+	$(APPLY) $(SRC)/theora/libtheora-compiler-differentiation.patch
+	$(APPLY) $(SRC)/theora/libtheora-no-forceaddr.patch
 	$(UPDATE_AUTOCONFIG)
 	$(MOVE)
 

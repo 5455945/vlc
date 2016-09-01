@@ -2,7 +2,7 @@
  * ps.c: Program Stream demux module for VLC.
  *****************************************************************************
  * Copyright (C) 2004-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: e82dbfb54cc2f34a33d3da4a0fd0148d50fe9060 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *
@@ -258,7 +258,7 @@ static void FindLength( demux_t *p_demux )
         stream_Seek( p_demux->s, i_size - i_end );
 
         i = 0;
-        while( vlc_object_alive (p_demux) && i < 40 && Demux2( p_demux, true ) > 0 ) i++;
+        while( vlc_object_alive (p_demux) && i < 400 && Demux2( p_demux, true ) > 0 ) i++;
         if( i_current_pos >= 0 ) stream_Seek( p_demux->s, i_current_pos );
     }
 
@@ -266,7 +266,7 @@ static void FindLength( demux_t *p_demux )
     for( int i = 0; i < PS_TK_COUNT; i++ )
     {
         ps_track_t *tk = &p_sys->tk[i];
-        if( tk->i_first_pts >= 0 && tk->i_last_pts > 0 &&
+        if( tk->i_last_pts > 0 &&
             tk->i_last_pts > tk->i_first_pts )
         {
             int64_t i_length = (int64_t)tk->i_last_pts - tk->i_first_pts;
@@ -274,7 +274,7 @@ static void FindLength( demux_t *p_demux )
             {
                 p_sys->i_length = i_length;
                 p_sys->i_time_track = i;
-                msg_Dbg( p_demux, "we found a length of: %"PRId64, p_sys->i_length );
+                msg_Dbg( p_demux, "we found a length of: %"PRId64 "s", p_sys->i_length / CLOCK_FREQ );
             }
         }
     }

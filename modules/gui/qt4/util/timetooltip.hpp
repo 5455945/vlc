@@ -1,6 +1,6 @@
 /*****************************************************************************
  * Copyright © 2011 VideoLAN
- * $Id$
+ * $Id: 53a1f78975febac1cf2ad7e80f7cf1d6fba60f55 $
  *
  * Authors: Ludovic Fauvet <etix@l0cal.com>
  *
@@ -21,6 +21,8 @@
 
 #ifndef TIMETOOLTIP_H
 #define TIMETOOLTIP_H
+
+#include "qt4.hpp"
 
 #include <QWidget>
 #include <QBitmap>

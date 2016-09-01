@@ -2,7 +2,7 @@
  * rar.c: uncompressed RAR parser
  *****************************************************************************
  * Copyright (C) 2008-2010 Laurent Aimar
- * $Id$
+ * $Id: 3edb79344eb67850a9fa50c802247262ef5af445 $
  *
  * Author: Laurent Aimar <fenrir _AT_ videolan _DOT_ org>
  *
@@ -197,7 +197,7 @@ static int SkipFile(stream_t *s, int *count, rar_file_t ***file,
 
     rar_file_t *current = NULL;
     if (method != 0x30) {
-        msg_Warn(s, "Ignoring compressed file %s (method=0x%2.2x)", name, method);
+        msg_Dbg(s, "Ignoring compressed file %s (method=0x%2.2x)", name, method);
         goto exit;
     }
 
@@ -397,8 +397,7 @@ int RarParse(stream_t *s, int *count, rar_file_t ***file, bool b_extonly)
             return VLC_SUCCESS;
 
         const int s_flags = s->i_flags;
-        if (has_next < 0)
-            s->i_flags |= OBJECT_FLAGS_NOINTERACT;
+        s->i_flags |= OBJECT_FLAGS_NOINTERACT;
         vol = stream_UrlNew(s, volume_mrl);
         s->i_flags = s_flags;
 

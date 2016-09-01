@@ -2,7 +2,7 @@
  * kate.c : a decoder for the kate bitstream format
  *****************************************************************************
  * Copyright (C) 2000-2008 VLC authors and VideoLAN
- * $Id$
+ * $Id: 93cbb3d48f372909d1ce88f3ee5da4eadb447b93 $
  *
  * Authors: Vincent Penquerc'h <ogg.k.ogg.k@googlemail.com>
  *
@@ -1170,7 +1170,8 @@ static subpicture_t *DecodePacket( decoder_t *p_dec, kate_packet *p_kp, block_t 
     }
 
     p_spu->i_start = p_block->i_pts;
-    p_spu->i_stop = p_block->i_pts + INT64_C(1000000)*ev->duration*p_sys->ki.gps_denominator/p_sys->ki.gps_numerator;
+    p_spu->i_stop = p_block->i_pts + CLOCK_FREQ *
+        ev->duration * p_sys->ki.gps_denominator / p_sys->ki.gps_numerator;
     p_spu->b_ephemer = false;
     p_spu->b_absolute = false;
 

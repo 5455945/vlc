@@ -3,7 +3,7 @@
  *                        and SegmentInfo
  *****************************************************************************
  * Copyright (C) 1998-2007 VLC authors and VideoLAN
- * $Id$
+ * $Id: 0ea4de709c812875313a5777b099780acf6ac97f $
  *
  * Authors: Hugo Beauzée-Luyssen <beauze.h@gmail.com>
  *

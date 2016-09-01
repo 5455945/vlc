@@ -2,7 +2,7 @@
  * VLCUIWidgets.m: Widgets for VLC's Minimal Dialog Provider for Mac OS X
  *****************************************************************************
  * Copyright (C) 2009-2010 VLC authors and VideoLAN
- * $Id$
+ * $Id: e3ae835e10bd23fa16fb163f992f40ec2f24bb86 $
  *
  * Authors: Pierre d'Herbemont <pdherbemont # videolan dot>
  *

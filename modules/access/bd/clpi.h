@@ -2,7 +2,7 @@
  * clpi.h: BluRay Disc CLPI
  *****************************************************************************
  * Copyright (C) 2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: e56d55ffbfe084ecd375778cdf7834e4fe463dca $
  *
  * Authors: Laurent Aimar <fenrir _AT_ videolan _DOT_ org>
  *

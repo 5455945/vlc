@@ -2,7 +2,7 @@
  * ts.c: Transport Stream input module for VLC.
  *****************************************************************************
  * Copyright (C) 2004-2005 VLC authors and VideoLAN
- * $Id$
+ * $Id: 377db21ebba5ffddc3047bdb32a4e85c6c899eab $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *          Jean-Paul Saman <jpsaman #_at_# m2x.nl>
@@ -98,13 +98,6 @@ static void Close ( vlc_object_t * );
                        " handled by VLC to the same value as the PID in" \
                        " the TS stream, instead of 1, 2, 3, etc. Useful to" \
                        " do \'#duplicate{..., select=\"es=<pid>\"}\'.")
-
-#define TSOUT_TEXT N_("Fast udp streaming")
-#define TSOUT_LONGTEXT N_( \
-  "Sends TS to specific ip:port by udp (you must know what you are doing).")
-
-#define MTUOUT_TEXT N_("MTU for out mode")
-#define MTUOUT_LONGTEXT N_("MTU for out mode.")
 
 #define CSA_TEXT N_("CSA Key")
 #define CSA_LONGTEXT N_("CSA encryption key. This must be a " \
@@ -240,9 +233,9 @@ typedef enum
 
 typedef enum
 {
-    TS_REGISTRATION_OTHER = 0,
-    TS_REGISTRATION_HDMV
-} ts_registration_type_t;
+    TS_PMT_REGISTRATION_NONE = 0,
+    TS_PMT_REGISTRATION_HDMV
+} ts_pmt_registration_type_t;
 
 typedef struct
 {
@@ -384,7 +377,6 @@ static void SetPrgFilter( demux_t *, int i_prg, bool b_selected );
 #define TS_PACKET_SIZE_192 192
 #define TS_PACKET_SIZE_204 204
 #define TS_PACKET_SIZE_MAX 204
-#define TS_TOPFIELD_HEADER 1320
 
 static int DetectPacketSize( demux_t *p_demux, int *pi_header_size )
 {
@@ -1733,7 +1725,8 @@ static void ParsePES( demux_t *p_demux, ts_pid_t *pid, block_t *p_pes )
         }
 
         if (!p_sys->b_trust_pcr)
-            es_out_Control( p_demux->out, ES_OUT_SET_PCR, p_block->i_pts);
+            es_out_Control( p_demux->out, ES_OUT_SET_GROUP_PCR,
+                    pid->i_owner_number, p_block->i_pts);
 
         es_out_Send( p_demux->out, pid->es->id, p_block );
     }
@@ -2032,6 +2025,29 @@ static int Seek( demux_t *p_demux, double f_percent )
     }
     else
     {
+        for( int i = 2; i < 8192; i++ )
+        {
+            ts_pid_t *pid = &p_sys->pid[i];
+
+            if( !pid->b_valid || !pid->es || !pid->es->id )
+                continue;
+
+            if( pid->es->p_data )
+            {
+                block_ChainRelease( pid->es->p_data );
+                pid->es->p_data = NULL;
+                pid->es->i_data_size = 0;
+                pid->es->i_data_gathered = 0;
+                pid->es->pp_last = &pid->es->p_data;
+            }
+            block_t *p_reset = block_Alloc(1);
+            if( p_reset )
+            {
+                p_reset->i_buffer = 0;
+                p_reset->i_flags = BLOCK_FLAG_DISCONTINUITY | BLOCK_FLAG_CORRUPTED;
+                es_out_Send( p_demux->out, pid->es->id, p_reset );
+            }
+        }
         msg_Dbg( p_demux, "Seek():can find a time position. i_cnt:%d", i_cnt );
         return VLC_SUCCESS;
     }
@@ -2168,10 +2184,10 @@ static void PCRHandle( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
         p_sys->i_current_pcr = AdjustPCRWrapAround( p_demux, i_pcr );
 
     /* Search program and set the PCR */
-    int i_group = -1;
-    for( int i = 0; i < p_sys->i_pmt && i_group < 0 ; i++ )
+    for( int i = 0; i < p_sys->i_pmt; i++ )
     {
         bool b_pmt_has_es = false;
+        int i_group = -1;
 
         for( int i_prg = 0; i_prg < p_sys->pmt[i]->psi->i_prg; i_prg++ )
         {
@@ -2290,9 +2306,10 @@ static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
                       i_cc, ( pid->i_cc + 1 )&0x0f, pid->i_pid );
 
             pid->i_cc = i_cc;
-            if( pid->es->p_data && pid->es->fmt.i_cat != VIDEO_ES )
+            if( pid->es->p_data && pid->es->fmt.i_cat != VIDEO_ES &&
+                pid->es->fmt.i_cat != AUDIO_ES )
             {
-                /* Small video artifacts are usually better than
+                /* Small audio/video artifacts are usually better than
                  * dropping full frames */
                 pid->es->p_data->i_flags |= BLOCK_FLAG_CORRUPTED;
             }
@@ -3830,7 +3847,8 @@ static void PMTSetupEs0x83( const dvbpsi_pmt_t *p_pmt, ts_pid_t *pid )
         es_format_Init( &pid->es->fmt, AUDIO_ES, VLC_CODEC_DVD_LPCM );
 }
 
-static void PMTSetupEsHDMV( ts_pid_t *pid, const dvbpsi_pmt_es_t *p_es )
+static bool PMTSetupEsHDMV( demux_t *p_demux, ts_pid_t *pid,
+                            const dvbpsi_pmt_es_t *p_es )
 {
     es_format_t *p_fmt = &pid->es->fmt;
 
@@ -3865,12 +3883,17 @@ static void PMTSetupEsHDMV( ts_pid_t *pid, const dvbpsi_pmt_es_t *p_es )
         break;
     case 0x91: /* Interactive graphics */
     case 0x92: /* Subtitle */
+        return false;
     default:
+        msg_Info( p_demux, "HDMV registration not implemented for pid 0x%x type 0x%x",
+                  p_es->i_pid, p_es->i_type );
+        return false;
         break;
     }
+    return true;
 }
 
-static void PMTSetupEsRegistration( demux_t *p_demux, ts_pid_t *pid,
+static bool PMTSetupEsRegistration( demux_t *p_demux, ts_pid_t *pid,
                                     const dvbpsi_pmt_es_t *p_es )
 {
     static const struct
@@ -3898,9 +3921,10 @@ static void PMTSetupEsRegistration( demux_t *p_demux, ts_pid_t *pid,
             p_fmt->i_codec = p_regs[i].i_codec;
             if (p_es->i_type == 0x87)
                 p_fmt->i_codec = VLC_CODEC_EAC3;
-            return;
+            return true;
         }
     }
+    return false;
 }
 
 static char *GetAudioTypeDesc(demux_t *p_demux, int type)
@@ -4045,8 +4069,8 @@ static void PMTCallBack( void *data, dvbpsi_pmt_t *p_pmt )
     if( ProgramIsSelected( p_demux, prg->i_number ) )
         SetPIDFilter( p_demux, prg->i_pid_pcr, true ); /* Set demux filter */
 
-    /* Parse descriptor */
-    ts_registration_type_t registration_type = TS_REGISTRATION_OTHER;
+    /* Parse PMT descriptors */
+    ts_pmt_registration_type_t registration_type = TS_PMT_REGISTRATION_NONE;
     dvbpsi_descriptor_t  *p_dr;
     for( p_dr = p_pmt->p_first_descriptor; p_dr != NULL; p_dr = p_dr->p_next )
         switch(p_dr->i_tag)
@@ -4070,7 +4094,7 @@ static void PMTCallBack( void *data, dvbpsi_pmt_t *p_pmt )
             {
                 msg_Dbg( p_demux, " * descriptor : registration %4.4s", p_dr->p_data );
                 if( !memcmp( p_dr->p_data, "HDMV", 4 ) || !memcmp( p_dr->p_data, "HDPR", 4 ) )
-                    registration_type = TS_REGISTRATION_HDMV; /* Blu-Ray */
+                    registration_type = TS_PMT_REGISTRATION_HDMV; /* Blu-Ray */
             }
             break;
 
@@ -4123,36 +4147,52 @@ static void PMTCallBack( void *data, dvbpsi_pmt_t *p_pmt )
         pid->i_pid          = p_es->i_pid;
         pid->b_seen         = p_sys->pid[p_es->i_pid].b_seen;
 
-        switch( p_es->i_type )
+
+        bool b_registration_applied = false;
+        if ( p_es->i_type >= 0x80 ) /* non standard, extensions */
         {
-        case 0x10:
-        case 0x11:
-        case 0x12:
-        case 0x0f:
-            PMTSetupEsISO14496( p_demux, pid, prg, p_es );
-            break;
-        case 0x06:
-            PMTSetupEs0x06( p_demux, pid, p_es );
-            break;
-        case 0x83:
-            /* LPCM (audio) */
-            PMTSetupEs0x83( p_pmt, pid );
-            break;
-        case 0xa0:
-            PMTSetupEs0xA0( p_demux, pid, p_es );
-            break;
-        case 0xd1:
-            PMTSetupEs0xD1( p_demux, pid, p_es );
-            break;
-        case 0xEA:
-            PMTSetupEs0xEA( p_demux, pid, p_es );
-            break;
-        default:
-            if( registration_type == TS_REGISTRATION_HDMV )
-                PMTSetupEsHDMV( pid, p_es );
-            else if( p_es->i_type >= 0x80 )
-                PMTSetupEsRegistration( p_demux, pid, p_es );
-            break;
+            if ( registration_type == TS_PMT_REGISTRATION_HDMV )
+            {
+                if (( b_registration_applied = PMTSetupEsHDMV( p_demux, pid, p_es ) ))
+                    msg_Dbg( p_demux, "es HDMV registration applied to pid 0x%x type 0x%x",
+                             p_es->i_pid, p_es->i_type );
+            }
+            else
+            {
+                if (( b_registration_applied = PMTSetupEsRegistration( p_demux, pid, p_es ) ))
+                    msg_Dbg( p_demux, "es registration applied to pid 0x%x type 0x%x",
+                        p_es->i_pid, p_es->i_type );
+            }
+        }
+
+        if ( !b_registration_applied )
+        {
+            switch( p_es->i_type )
+            {
+            case 0x10:
+            case 0x11:
+            case 0x12:
+            case 0x0f:
+                PMTSetupEsISO14496( p_demux, pid, prg, p_es );
+                break;
+            case 0x06:
+                PMTSetupEs0x06( p_demux, pid, p_es );
+                break;
+            case 0x83:
+                /* LPCM (audio) */
+                PMTSetupEs0x83( p_pmt, pid );
+                break;
+            case 0xa0:
+                PMTSetupEs0xA0( p_demux, pid, p_es );
+                break;
+            case 0xd1:
+                PMTSetupEs0xD1( p_demux, pid, p_es );
+                break;
+            case 0xEA:
+                PMTSetupEs0xEA( p_demux, pid, p_es );
+            default:
+                break;
+            }
         }
 
         if( pid->es->fmt.i_cat == AUDIO_ES ||

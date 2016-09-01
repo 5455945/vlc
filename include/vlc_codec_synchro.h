@@ -2,7 +2,7 @@
  * vlc_codec_synchro.h: frame-dropping structures
  *****************************************************************************
  * Copyright (C) 1999-2005 VLC authors and VideoLAN
- * $Id$
+ * $Id: ee6c86af8dc8baaac7c2a9068a9dc8fa6cf7fe64 $
  *
  * Authors: Christophe Massiot <massiot@via.ecp.fr>
  *          Jean-Marc Dressler <polux@via.ecp.fr>

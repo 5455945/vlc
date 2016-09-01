@@ -2,7 +2,7 @@
  * win.c: Windows specific functions
  *****************************************************************************
  * Copyright (C) 2007-2012 the VideoLAN team
- * $Id$
+ * $Id: c7c0ee649011d27be5339baf685dbb5491ea4597 $
  *
  * Authors: Antoine Cellerier <dionoea at videolan tod org>
  *

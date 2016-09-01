@@ -2,7 +2,7 @@
  * extract.c : Extract RGB components
  *****************************************************************************
  * Copyright (C) 2000-2006 VLC authors and VideoLAN
- * $Id$
+ * $Id: 42953150ab4b9797777eba1d06e2fc9f180960ed $
  *
  * Authors: Antoine Cellerier <dionoea .t videolan d@t org>
  *

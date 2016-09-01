@@ -2,7 +2,7 @@
  * simple.c : simple channel mixer plug-in
  *****************************************************************************
  * Copyright (C) 2002, 2004, 2006-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: a17d3f75691722a0ed1ad4eb1d056320d2d11b71 $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *

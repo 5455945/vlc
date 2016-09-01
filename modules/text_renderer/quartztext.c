@@ -2,7 +2,7 @@
  * quartztext.c : Put text on the video, using Mac OS X Quartz Engine
  *****************************************************************************
  * Copyright (C) 2007, 2009, 2012 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8de10818f21591f2d8160082799fa405590c4e52 $
  *
  * Authors: Bernie Purcell <bitmap@videolan.org>
  *          Pierre d'Herbemont <pdherbemont # videolan dot>
@@ -785,7 +785,7 @@ static int RenderHtml(filter_t *p_filter, subpicture_region_t *p_region_out,
                          * of times to show the progress marker on the text.
                          */
                         var_SetBool(p_filter, "text-rerender", true);
-                    } else {
+                    } else if (strcasecmp("text", name)) {
                         /* Only text and karaoke tags are supported */
                         msg_Dbg(p_filter, "Unsupported top-level tag "
                                            "<%s> ignored.", name);

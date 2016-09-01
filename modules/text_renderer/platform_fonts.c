@@ -2,7 +2,7 @@
  * freetype.c : Put text on the video, using freetype2
  *****************************************************************************
  * Copyright (C) 2002 - 2012 VLC authors and VideoLAN
- * $Id$
+ * $Id: 7869dbaed4f507cd99a8a605f8cb2f9debdd7f35 $
  *
  * Authors: Sigmund Augdal Helberg <dnumgis@videolan.org>
  *          Gildas Bazin <gbazin@videolan.org>

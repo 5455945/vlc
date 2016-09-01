@@ -2,7 +2,7 @@
  * firstrun.cpp : First Run dialogs
  ****************************************************************************
  * Copyright © 2009 VideoLAN
- * $Id$
+ * $Id: 8c733e7500ed7839470402758e902697c5ac25eb $
  *
  * Authors: Jean-Baptiste Kempf <jb (at) videolan.org>
  *

@@ -2,7 +2,7 @@
  * h264.c : H264 Video demuxer
  *****************************************************************************
  * Copyright (C) 2002-2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8e785fc3410912184dee7c49acb5e5101c14d2f0 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

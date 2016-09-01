@@ -2,7 +2,7 @@
  * output.c : internal management of output streams for the audio output
  *****************************************************************************
  * Copyright (C) 2002-2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 3b6999c09550c2cab3d147ec9560bb04cc9c73dd $
  *
  * Authors: Christophe Massiot <massiot@via.ecp.fr>
  *
@@ -247,6 +247,7 @@ audio_output_t *aout_New (vlc_object_t *parent)
         text.psz_string = (char *)"Goom";
         var_Change (aout, "visual", VLC_VAR_ADDCHOICE, &val, &text);
     }
+#ifndef _WIN32
     /* Look for libprojectM plugin */
     if (module_exists ("projectm"))
     {
@@ -268,6 +269,7 @@ audio_output_t *aout_New (vlc_object_t *parent)
         text.psz_string = (char*)"3D spectrum";
         var_Change (aout, "visual", VLC_VAR_ADDCHOICE, &val, &text);
     }
+#endif
     str = var_GetNonEmptyString (aout, "effect-list");
     if (str != NULL)
     {

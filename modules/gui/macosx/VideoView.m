@@ -2,7 +2,7 @@
  * VideoView.m: MacOS X video output module
  *****************************************************************************
  * Copyright (C) 2002-2014 VLC authors and VideoLAN
- * $Id$
+ * $Id: c02e4495c135762dd63ee4e548a3fbb4ebd20773 $
  *
  * Authors: Derk-Jan Hartman <hartman at videolan dot org>
  *          Eric Petit <titer@m0k.org>

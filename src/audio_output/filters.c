@@ -2,7 +2,7 @@
  * filters.c : audio output filters management
  *****************************************************************************
  * Copyright (C) 2002-2007 VLC authors and VideoLAN
- * $Id$
+ * $Id: e6a695593f516255071038fd17de6591d4c32b89 $
  *
  * Authors: Christophe Massiot <massiot@via.ecp.fr>
  *

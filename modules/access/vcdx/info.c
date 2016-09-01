@@ -2,7 +2,7 @@
  * info.c : CD digital audio input information routines
  *****************************************************************************
  * Copyright (C) 2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 42cc5daaad55dfaa346c5df044f98963a6258591 $
  *
  * Authors: Rocky Bernstein <rocky@panix.com>
  *

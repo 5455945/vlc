@@ -2,7 +2,7 @@
  * ts.c: MPEG-II TS Muxer
  *****************************************************************************
  * Copyright (C) 2001-2005 VLC authors and VideoLAN
- * $Id$
+ * $Id: 21111a77d4aa32e2caaa0063282ee1a902360d4f $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *          Eric Petit <titer@videolan.org>
@@ -723,13 +723,14 @@ static int Open( vlc_object_t *p_this )
 
     p_sys->b_use_key_frames = var_GetBool( p_mux, SOUT_CFG_PREFIX "use-key-frames" );
 
+    p_mux->p_sys        = p_sys;
+
     p_sys->csa = csaSetup(p_this);
 
     p_mux->pf_control   = Control;
     p_mux->pf_addstream = AddStream;
     p_mux->pf_delstream = DelStream;
     p_mux->pf_mux       = Mux;
-    p_mux->p_sys        = p_sys;
 
     return VLC_SUCCESS;
 }
@@ -995,6 +996,8 @@ static int AddStream( sout_mux_t *p_mux, sout_input_t *p_input )
 
     if (p_stream->i_stream_type == -1)
     {
+        msg_Warn( p_mux, "rejecting stream with unsupported codec %4.4s",
+                  (char*)&p_stream->i_codec );
         free( p_stream );
         return VLC_EGENERIC;
     }

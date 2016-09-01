@@ -2,7 +2,7 @@
  * record.c: record stream output module
  *****************************************************************************
  * Copyright (C) 2008-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8231f487fb2e52ae056c1ee5f1dce752a95d28bd $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

@@ -2,7 +2,7 @@
  * a52.h
  *****************************************************************************
  * Copyright (C) 2001-2009 Laurent Aimar
- * $Id$
+ * $Id: 00078d39854297fbde59dbb63c8a08ce7aef78fa $
  *
  * Authors: Stéphane Borel <stef@via.ecp.fr>
  *          Christophe Massiot <massiot@via.ecp.fr>

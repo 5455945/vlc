@@ -2,7 +2,7 @@
  * anaglyph.c : Create an image compatible with anaglyph glasses from a 3D video
  *****************************************************************************
  * Copyright (C) 2000-2012 VLC authors and VideoLAN
- * $Id$
+ * $Id: 5e103d4be9e429750fc2853df916a948f969752b $
  *
  * Authors: Antoine Cellerier <dionoea .t videolan d@t org>
  *

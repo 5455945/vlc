@@ -2,7 +2,7 @@
  * main_interface_win32.cpp : Main interface
  ****************************************************************************
  * Copyright (C) 2006-2010 VideoLAN and AUTHORS
- * $Id$
+ * $Id: 602fbb2be9e351a5733018397adc0b3863e7bc91 $
  *
  * Authors: Jean-Baptiste Kempf <jb@videolan.org>
  *
@@ -27,6 +27,7 @@
 #include "input_manager.hpp"
 #include "actions_manager.hpp"
 #include "dialogs_provider.hpp"
+#include "components/interface_widgets.hpp"
 
 #include <QBitmap>
 #include <vlc_windows_interfaces.h>
@@ -78,13 +79,14 @@
 #define GET_FLAGS_LPARAM(lParam)      (LOWORD(lParam))
 #define GET_KEYSTATE_LPARAM(lParam)   GET_FLAGS_LPARAM(lParam)
 
-HWND MainInterface::WinId()
+HWND MainInterface::WinId( QWidget *w )
 {
 #if HAS_QT5
-    QWindow *window = windowHandle();
-    HWND id = static_cast<HWND>(QGuiApplication::platformNativeInterface()->
-            nativeResourceForWindow("handle", window));
-    return id;
+    if( w && w->windowHandle() )
+        return static_cast<HWND>(QGuiApplication::platformNativeInterface()->
+            nativeResourceForWindow("handle", w->windowHandle()));
+    else
+        return 0;
 #else
     return winId();
 #endif
@@ -113,9 +115,11 @@ void MainInterface::createTaskBarButtons()
     FIXME:the play button's picture doesn't changed to pause when clicked
     */
 
-    CoInitializeEx( NULL, COINIT_MULTITHREADED );
+    HRESULT hr = CoInitializeEx( NULL, COINIT_MULTITHREADED );
+    if( hr == RPC_E_CHANGED_MODE )
+        hr = CoInitializeEx( NULL, COINIT_APARTMENTTHREADED );
 
-    if( S_OK == CoCreateInstance( CLSID_TaskbarList,
+    if( SUCCEEDED(hr) && S_OK == CoCreateInstance( CLSID_TaskbarList,
                 NULL, CLSCTX_INPROC_SERVER,
                 IID_ITaskbarList3,
                 (void **)&p_taskbl) )
@@ -168,12 +172,12 @@ void MainInterface::createTaskBarButtons()
         thbButtons[2].iBitmap = 3;
         thbButtons[2].dwFlags = THBF_HIDDEN;
 
-        HRESULT hr = p_taskbl->ThumbBarSetImageList(WinId(), himl );
+        HRESULT hr = p_taskbl->ThumbBarSetImageList(WinId(this), himl );
         if(S_OK != hr)
             msg_Err( p_intf, "ThumbBarSetImageList failed with error %08lx", hr );
         else
         {
-            hr = p_taskbl->ThumbBarAddButtons(WinId(), 3, thbButtons);
+            hr = p_taskbl->ThumbBarAddButtons(WinId(this), 3, thbButtons);
             if(S_OK != hr)
                 msg_Err( p_intf, "ThumbBarAddButtons failed with error %08lx", hr );
         }
@@ -184,7 +188,6 @@ void MainInterface::createTaskBarButtons()
         himl = NULL;
         p_taskbl = NULL;
     }
-
 }
 
 bool MainInterface::winEvent ( MSG * msg, long * result )
@@ -333,7 +336,13 @@ void MainInterface::changeThumbbarButtons( int i_status )
         default:
             return;
     }
-    HRESULT hr =  p_taskbl->ThumbBarUpdateButtons(WinId(), 3, thbButtons);
+
+    HRESULT hr;
+    if( videoWidget && THEMIM->getIM()->hasVideo() )
+        hr =  p_taskbl->ThumbBarUpdateButtons(WinId(videoWidget), 3, thbButtons);
+    else
+        hr =  p_taskbl->ThumbBarUpdateButtons(WinId(this), 3, thbButtons);
+
     if(S_OK != hr)
         msg_Err( p_intf, "ThumbBarUpdateButtons failed with error %08lx", hr );
 }

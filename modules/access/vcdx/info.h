@@ -2,7 +2,7 @@
  * info.h : VCD information routine headers
  *****************************************************************************
  * Copyright (C) 2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8e820b6177ca041e204993281a1d9501ab977193 $
  *
  * Authors: Rocky Bernstein <rocky@panix.com>
  *

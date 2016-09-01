@@ -2,7 +2,7 @@
  * SegmentTimeline.cpp: Implement the SegmentTimeline tag.
  *****************************************************************************
  * Copyright (C) 1998-2007 VLC authors and VideoLAN
- * $Id$
+ * $Id: 7763bbe17ab9514116cc4477177a1fadbf5515c0 $
  *
  * Authors: Hugo Beauzée-Luyssen <beauze.h@gmail.com>
  *

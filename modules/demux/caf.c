@@ -2,7 +2,7 @@
  * caf.c: Core Audio File Format demuxer
  *****************************************************************************
  * Copyright (C) 2013 VLC authors and VideoLAN
- * $Id$
+ * $Id: 465caf66866235d960b99148701afbb605780d96 $
  *
  * Authors: Matthias Keiser <matthias@tristan-inc.com>
  *

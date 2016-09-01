@@ -2,7 +2,7 @@
  * VLCLoginPanel.m: A Generic Login Panel created for VLC
  *****************************************************************************
  * Copyright (C) 2009-2010 VLC authors and VideoLAN
- * $Id$
+ * $Id: 568a636f2366a577b42c676f00c0973219a7c991 $
  *
  * Authors: Felix Paul Kühne <fkuehne at videolan dot org>
  *

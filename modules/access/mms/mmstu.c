@@ -2,7 +2,7 @@
  * mmstu.c: MMS access plug-in
  *****************************************************************************
  * Copyright (C) 2001, 2002 VLC authors and VideoLAN
- * $Id$
+ * $Id: 6091fbd274de57918fd53b1221963764f8e5c0dc $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

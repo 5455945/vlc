@@ -2,7 +2,7 @@
  * smooth.c: Smooth Streaming stream filter
  *****************************************************************************
  * Copyright (C) 1996-2012 VLC authors and VideoLAN
- * $Id$
+ * $Id: e3be19075c38ca4fd234a68c2a4487dca84ea32a $
  *
  * Author: Frédéric Yhuel <fyhuel _AT_ viotech _DOT_ net>
  * Heavily inspired by HLS module of Jean-Paul Saman
@@ -173,6 +173,7 @@ static int parse_Manifest( stream_t *s )
                 }
                 else if( !strcmp( node, "StreamIndex" ) )
                 {
+                    sms_Free( sms );
                     sms = sms_New();
                     if( unlikely( !sms ) )
                     {

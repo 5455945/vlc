@@ -2,7 +2,7 @@
  * ConvertAndSave.h: MacOS X interface module
  *****************************************************************************
  * Copyright (C) 2012 Felix Paul Kühne
- * $Id$
+ * $Id: 9e8a8a92c514640dfa6a57bc394d6a6d2092faac $
  *
  * Authors: Felix Paul Kühne <fkuehne -at- videolan -dot- org>
  *

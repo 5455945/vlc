@@ -2,7 +2,7 @@
  * SSA/ASS subtitle decoder using libass.
  *****************************************************************************
  * Copyright (C) 2008-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8e32d64f9010ff50428662094c0c1d4db22a8a67 $
  *
  * Authors: Laurent Aimar <fenrir@videolan.org>
  *
@@ -219,7 +219,7 @@ static int Create( vlc_object_t *p_this )
 #endif
 
 #ifdef HAVE_FONTCONFIG
-#if defined(_WIN32)
+#if defined(_WIN32) || defined(__APPLE__)
     dialog_progress_bar_t *p_dialog =
         dialog_ProgressCreate( p_dec,
                                _("Building font cache"),
@@ -227,7 +227,7 @@ static int Create( vlc_object_t *p_this )
                                   "This should take less than a minute." ), NULL );
 #endif
     ass_set_fonts( p_renderer, psz_font, psz_family, true, NULL, 1 );  // setup default font/family
-#ifdef _WIN32
+#if defined(_WIN32) || defined(__APPLE__)
     if( p_dialog )
     {
         dialog_ProgressSet( p_dialog, NULL, 1.0 );
@@ -394,15 +394,13 @@ static int SubpictureValidate( subpicture_t *p_subpic,
     video_format_t fmt = *p_fmt_dst;
     fmt.i_chroma         = VLC_CODEC_RGBA;
     fmt.i_bits_per_pixel = 0;
-    fmt.i_visible_width  = fmt.i_width;
-    fmt.i_visible_height = fmt.i_height;
     fmt.i_x_offset       = 0;
     fmt.i_y_offset       = 0;
     if( b_fmt_src || b_fmt_dst )
     {
-        ass_set_frame_size( p_sys->p_renderer, fmt.i_width, fmt.i_height );
-        const double src_ratio = (double)p_fmt_src->i_width / p_fmt_src->i_height;
-        const double dst_ratio = (double)p_fmt_dst->i_width / p_fmt_dst->i_height;
+        ass_set_frame_size( p_sys->p_renderer, fmt.i_visible_width, fmt.i_visible_height );
+        const double src_ratio = (double)p_fmt_src->i_visible_width / p_fmt_src->i_visible_height;
+        const double dst_ratio = (double)p_fmt_dst->i_visible_width / p_fmt_dst->i_visible_height;
         ass_set_aspect_ratio( p_sys->p_renderer, dst_ratio / src_ratio, 1 );
         p_sys->fmt = fmt;
     }
@@ -438,8 +436,8 @@ static void SubpictureUpdate( subpicture_t *p_subpic,
     ASS_Image *p_img = p_subpic->updater.p_sys->p_img;
 
     /* */
-    p_subpic->i_original_picture_height = fmt.i_height;
-    p_subpic->i_original_picture_width = fmt.i_width;
+    p_subpic->i_original_picture_height = fmt.i_visible_height;
+    p_subpic->i_original_picture_width = fmt.i_visible_width;
 
     /* XXX to improve efficiency we merge regions that are close minimizing
      * the lost surface.
@@ -627,11 +625,14 @@ static int BuildRegions( rectangle_t *p_region, int i_max_region, ASS_Image *p_i
 #ifdef DEBUG_REGION
             msg_Err( p_spu, "Merging %d and %d", i_best_i, i_best_j );
 #endif
-            r_add( &region[i_best_i], &region[i_best_j] );
+            if( i_best_j >= 0 && i_best_i >= 0 )
+            {
+                r_add( &region[i_best_i], &region[i_best_j] );
 
-            if( i_best_j+1 < i_region )
-                memmove( &region[i_best_j], &region[i_best_j+1], sizeof(*region) * ( i_region - (i_best_j+1)  ) );
-            i_region--;
+                if( i_best_j+1 < i_region )
+                    memmove( &region[i_best_j], &region[i_best_j+1], sizeof(*region) * ( i_region - (i_best_j+1)  ) );
+                i_region--;
+            }
         }
     }
 

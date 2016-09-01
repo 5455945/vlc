@@ -2,7 +2,7 @@
  * VLCVoutWindowController.m: MacOS X interface module
  *****************************************************************************
  * Copyright (C) 2012-2014 VLC authors and VideoLAN
- * $Id$
+ * $Id: 2d17a99162b107a794e56872189a6efade7f8830 $
  *
  * Authors: Felix Paul Kühne <fkuehne -at- videolan -dot- org>
  *          David Fuhrmann <david dot fuhrmann at googlemail dot com>
@@ -41,6 +41,7 @@
     self = [super init];
     o_vout_dict = [[NSMutableDictionary alloc] init];
     i_currentWindowLevel = NSNormalWindowLevel;
+    i_currentFloatingWindowLevel = NSFloatingWindowLevel;
     return self;
 }
 
@@ -214,7 +215,7 @@
     BOOL b_have_splitter = psz_splitter != NULL && *psz_splitter != '\0';
     free(psz_splitter);
 
-    if (!b_have_splitter && (var_InheritBool(VLCIntf, "fullscreen") || var_GetBool(pl_Get(VLCIntf), "fullscreen"))) {
+    if (!b_video_wallpaper && !b_have_splitter && (var_InheritBool(VLCIntf, "fullscreen") || var_GetBool(pl_Get(VLCIntf), "fullscreen"))) {
 
         // this is not set when we start in fullscreen because of
         // fullscreen settings in video prefs the second time
@@ -397,15 +398,21 @@
         return;
 
     i_currentWindowLevel = i_level;
+    if (i_level == NSNormalWindowLevel) {
+        i_currentFloatingWindowLevel = NSFloatingWindowLevel;
+    } else {
+        i_currentFloatingWindowLevel = i_level + 1;
+    }
 
     [[VLCMainWindow sharedInstance] setWindowLevel:i_level];
-    [[VLCVideoEffects sharedInstance] updateCocoaWindowLevel:i_level];
-    [[VLCAudioEffects sharedInstance] updateCocoaWindowLevel:i_level];
-    [[[VLCMain sharedInstance] info] updateCocoaWindowLevel:i_level];
-    [[VLCBookmarks sharedInstance] updateCocoaWindowLevel:i_level];
-    [[VLCTrackSynchronization sharedInstance] updateCocoaWindowLevel:i_level];
+
+    [[VLCVideoEffects sharedInstance] updateCocoaWindowLevel:i_currentFloatingWindowLevel];
+    [[VLCAudioEffects sharedInstance] updateCocoaWindowLevel:i_currentFloatingWindowLevel];
+    [[[VLCMain sharedInstance] info] updateCocoaWindowLevel:i_currentFloatingWindowLevel];
+    [[VLCBookmarks sharedInstance] updateCocoaWindowLevel:i_currentFloatingWindowLevel];
+    [[VLCTrackSynchronization sharedInstance] updateCocoaWindowLevel:i_currentFloatingWindowLevel];
 }
 
-@synthesize currentWindowLevel=i_currentWindowLevel;
+@synthesize currentStatusWindowLevel=i_currentFloatingWindowLevel;
 
 @end

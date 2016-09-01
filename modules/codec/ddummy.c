@@ -2,7 +2,7 @@
  * ddummy.c: dummy decoder plugin for vlc.
  *****************************************************************************
  * Copyright (C) 2002 VLC authors and VideoLAN
- * $Id$
+ * $Id: 91289d1160916e3b59d06fa528a918d87465a879 $
  *
  * Authors: Samuel Hocevar <sam@zoy.org>
  *

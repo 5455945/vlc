@@ -2,7 +2,7 @@
  * actions_manager.hpp : Controller for the main interface
  ****************************************************************************
  * Copyright (C) 2006-2008 the VideoLAN team
- * $Id$
+ * $Id: 543f10adec0c7b88b55d9bd49c8f4faf477946d9 $
  *
  * Authors: Jean-Baptiste Kempf <jb@videolan.org>
  *
@@ -32,6 +32,8 @@
 #include "util/singleton.hpp"
 
 #include <QObject>
+class QAction;
+
 typedef enum actionType_e
 {
     PLAY_ACTION,
@@ -81,6 +83,7 @@ public slots:
     void record();
     void skipForward();
     void skipBackward();
+    void PPaction( QAction * );
 
 protected slots:
     void fullscreen();

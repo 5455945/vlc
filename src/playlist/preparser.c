@@ -2,7 +2,7 @@
  * preparser.c: Preparser thread.
  *****************************************************************************
  * Copyright © 1999-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: b44b9f8db8efcdac25f0bf51cf610f32d8ed92a8 $
  *
  * Authors: Samuel Hocevar <sam@zoy.org>
  *          Clément Stenac <zorglub@videolan.org>

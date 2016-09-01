@@ -4,7 +4,7 @@
  * It is more lightweight than variable based callback.
  *****************************************************************************
  * Copyright (C) 1998-2005 VLC authors and VideoLAN
- * $Id$
+ * $Id: fb2a04df3accfd0cdac885211dce36c37aa5fdb3 $
  *
  * Authors: Pierre d'Herbemont <pdherbemont # videolan.org >
  *

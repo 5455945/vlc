@@ -2,7 +2,7 @@
  * loadsave.c : Playlist loading / saving functions
  *****************************************************************************
  * Copyright (C) 1999-2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 605059fef537b15bab8d113ad8a01d62bbda1257 $
  *
  * Authors: Samuel Hocevar <sam@zoy.org>
  *

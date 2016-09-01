@@ -2,7 +2,7 @@
  * direct2d.c : Direct2D video output plugin for vlc (Win7/Vista SP2 PF Update)
  *****************************************************************************
  * Copyright (C) 2010 VideoLAN and AUTHORS
- * $Id$
+ * $Id: e758afd4632007da2f89dcd8a196d4bc30f5110f $
  *
  * Author: David Kaplan <david@2of1.org>
  *

@@ -2,7 +2,7 @@
  * upnp.hpp :  UPnP discovery module (libupnp) header
  *****************************************************************************
  * Copyright (C) 2004-2010 the VideoLAN team
- * $Id$
+ * $Id: 23fe4db9ab4490263934d3a8bba7293f8f92754e $
  *
  * Authors: Rémi Denis-Courmont <rem # videolan.org> (original plugin)
  *          Christian Henz <henz # c-lab.de>

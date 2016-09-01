@@ -2,7 +2,7 @@
  * alphamask.c : Alpha layer mask video filter for vlc
  *****************************************************************************
  * Copyright (C) 2007 VLC authors and VideoLAN
- * $Id$
+ * $Id: a9f17c23e0bfdc2e9fafa1133ae4813ddcfecc83 $
  *
  * Authors: Antoine Cellerier <dionoea at videolan tod org>
  *

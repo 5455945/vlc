@@ -2,7 +2,7 @@
  * SegmentInfoDefault.cpp: Implement the SegmentInfoDefault element.
  *****************************************************************************
  * Copyright (C) 1998-2007 VLC authors and VideoLAN
- * $Id$
+ * $Id: f9a31592f3811896a2f021ca861b2756e8a60dc1 $
  *
  * Authors: Hugo Beauzée-Luyssen <beauze.h@gmail.com>
  *

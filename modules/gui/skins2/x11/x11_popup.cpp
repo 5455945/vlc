@@ -2,7 +2,7 @@
  * x11_popup.cpp
  *****************************************************************************
  * Copyright (C) 2003 the VideoLAN team
- * $Id$
+ * $Id: bdf91fbfa53af06566db854d2e229d715a834d40 $
  *
  * Authors: Olivier Teulière <ipkiss@via.ecp.fr>
  *

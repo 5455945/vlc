@@ -2,7 +2,7 @@
  * bonjour.c: Bonjour services discovery module
  *****************************************************************************
  * Copyright (C) 2005-2009 the VideoLAN team
- * $Id$
+ * $Id: e118ab260c9024b04deeb85f205abf6976c2b97c $
  *
  * Authors: Jon Lech Johansen <jon@nanocrew.net>
  *

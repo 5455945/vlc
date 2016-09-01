@@ -2,7 +2,7 @@
  * rotate.c : video rotation filter
  *****************************************************************************
  * Copyright (C) 2000-2008 VLC authors and VideoLAN
- * $Id$
+ * $Id: 2cfb868783c3a99cf05f9161abd2adfd30807671 $
  *
  * Authors: Antoine Cellerier <dionoea -at- videolan -dot- org>
  *

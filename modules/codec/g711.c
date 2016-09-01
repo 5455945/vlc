@@ -2,7 +2,7 @@
  * g711.c: G.711 µ-law and A-law codec
  *****************************************************************************
  * Copyright (C) 2001, 2003 VLC authors and VideoLAN
- * $Id$
+ * $Id: 0473c73017a9677f91c4e02cf80959bbcebae042 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

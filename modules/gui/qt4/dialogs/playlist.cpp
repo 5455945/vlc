@@ -2,7 +2,7 @@
  * playlist.cpp : Playlist dialog
  ****************************************************************************
  * Copyright (C) 2006 the VideoLAN team
- * $Id$
+ * $Id: 0da5c984535cc85f398ff5db0253b6748fdecc4f $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *

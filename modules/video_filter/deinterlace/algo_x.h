@@ -2,7 +2,7 @@
  * algo_x.h : "X" algorithm for vlc deinterlacer
  *****************************************************************************
  * Copyright (C) 2000-2011 VLC authors and VideoLAN
- * $Id$
+ * $Id: 16b7cd1bde596f9490b78a1b39ae55747f618b1a $
  *
  * Author: Laurent Aimar <fenrir@videolan.org>
  *

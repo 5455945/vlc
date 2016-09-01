@@ -2,7 +2,7 @@
  * gototime.cpp : GotoTime and About dialogs
  ****************************************************************************
  * Copyright (C) 2007 the VideoLAN team
- * $Id$
+ * $Id: 77035fb05b73b219c6331320f9f92fab2fd1aced $
  *
  * Authors: Jean-Baptiste Kempf <jb (at) videolan.org>
  *

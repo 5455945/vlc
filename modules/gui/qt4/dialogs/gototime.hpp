@@ -2,7 +2,7 @@
  * gototime.hpp : GotoTime dialogs
  ****************************************************************************
  * Copyright (C) 2007 the VideoLAN team
- * $Id$
+ * $Id: 59e1fb03252cc7b432ecd81551dab9b8271c5334 $
  *
  * Authors: Jean-Baptiste Kempf <jb (at) videolan.org>
  *

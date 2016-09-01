@@ -2,7 +2,7 @@
  * logger.c : file logging plugin for vlc
  *****************************************************************************
  * Copyright (C) 2002-2008 the VideoLAN team
- * $Id$
+ * $Id: e40dd968d53f9c93425976a187deae725d93a6d5 $
  *
  * Authors: Samuel Hocevar <sam@zoy.org>
  *

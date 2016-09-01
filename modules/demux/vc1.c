@@ -2,7 +2,7 @@
  * vc1.c : VC1 Video demuxer
  *****************************************************************************
  * Copyright (C) 2002-2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 9360902eb2b283d0cf526e4dafb986fa2337cfb8 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

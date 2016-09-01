@@ -2,7 +2,7 @@
  * extensions_manager.h: Extensions manager for Cocoa
  ****************************************************************************
  * Copyright (C) 2012 VideoLAN and authors
- * $Id$
+ * $Id: 890d16f3171c8eeb2951623fc3c3f10b86aa9844 $
  *
  * Authors: Brendon Justin <brendonjustin@gmail.com>
  *

@@ -2,7 +2,7 @@
  * input_interface.h: Input functions usable outside input code.
  *****************************************************************************
  * Copyright (C) 1998-2008 VLC authors and VideoLAN
- * $Id$
+ * $Id: a14d5a3b79c5194f084506dd094d855b01af5786 $
  *
  * Authors: Laurent Aimar < fenrir _AT_ videolan _DOT_ org >
  *

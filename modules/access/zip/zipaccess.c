@@ -2,7 +2,7 @@
  * zipaccess.c: Module (access) to extract different archives, based on zlib
  *****************************************************************************
  * Copyright (C) 2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 2f2b4dc167550efb656fe38ee77f5317383b84d6 $
  *
  * Authors: Jean-Philippe André <jpeg@videolan.org>
  *

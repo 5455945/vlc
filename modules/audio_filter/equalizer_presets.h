@@ -2,7 +2,7 @@
  * equalizer_presets.h:
  *****************************************************************************
  * Copyright (C) 2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 3ea70ca1cbcce82da07c8e83d74424467399ebb5 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

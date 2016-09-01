@@ -2,7 +2,7 @@
  * about.h: MacOS X About Panel
  *****************************************************************************
  * Copyright (C) 2001-2013 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8bab02e484f7e96bc733ce5cae2e7c8d8a2271c2 $
  *
  * Authors: Derk-Jan Hartman <thedj@users.sourceforge.net>
  *          Felix Paul Kühne <fkuehne -at- videolan.org>

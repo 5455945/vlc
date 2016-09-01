@@ -2,7 +2,7 @@
  * notify.c : libnotify notification plugin
  *****************************************************************************
  * Copyright (C) 2006-2009 the VideoLAN team
- * $Id$
+ * $Id: ff6c3252025e70152b4b9b67e4f047b35cee1d90 $
  *
  * Authors: Christophe Mutricy <xtophe -at- videolan -dot- org>
  *

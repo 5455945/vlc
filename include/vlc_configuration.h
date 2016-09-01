@@ -4,7 +4,7 @@
  * It includes functions allowing to declare, get or set configuration options.
  *****************************************************************************
  * Copyright (C) 1999-2006 VLC authors and VideoLAN
- * $Id$
+ * $Id: fe0aba5ca8b9d5bb60afd0ac9027d023b1862f2f $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *

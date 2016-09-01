@@ -2,7 +2,7 @@
  * smooth.h: misc. stuff
  *****************************************************************************
  * Copyright (C) 1996-2012 VLC authors and VideoLAN
- * $Id$
+ * $Id: 34340d128a8a8e21aa85e2e5387b9ec5b8c9b3ff $
  *
  * Author: Frédéric Yhuel <fyhuel _AT_ viotech _DOT_ net>
  *

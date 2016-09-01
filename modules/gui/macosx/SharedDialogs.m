@@ -2,7 +2,7 @@
  * SharedDialogs.m: MacOS X interface module
  *****************************************************************************
  * Copyright (C) 2012 Felix Paul Kühne
- * $Id$
+ * $Id: adb04729834b34604fc378c0e22b4fb7a8afe751 $
  *
  * Authors: Felix Paul Kühne <fkuehne -at- videolan -dot- org>
  *

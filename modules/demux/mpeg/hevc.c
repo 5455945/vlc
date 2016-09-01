@@ -2,7 +2,7 @@
  * hevc.c : HEVC Video demuxer
  *****************************************************************************
  * Copyright (C) 2014 VLC authors and VideoLAN
- * $Id$
+ * $Id: 9add76bd7b5bb787ec4a996328bfa217fc5e0c5d $
  *
  * Authors: Denis Charmet <typx@videolan.org>
  *

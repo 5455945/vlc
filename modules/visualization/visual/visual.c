@@ -2,7 +2,7 @@
  * visual.c : Visualisation system
  *****************************************************************************
  * Copyright (C) 2002-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 628fd7038564d293cff5edecc6b33050d6fb5744 $
  *
  * Authors: Clément Stenac <zorglub@via.ecp.fr>
  *

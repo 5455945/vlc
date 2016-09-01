@@ -6,7 +6,7 @@
  *
  * See the README.txt file for copyright information and how to reach the author(s).
  *
- * $Id$
+ * $Id: 41581f481fac9bbb421172d1373d1690d16988c8 $
  */
 
 #ifdef HAVE_CONFIG_H

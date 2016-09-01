@@ -2,7 +2,7 @@
  * i422_yuy2.h : YUV to YUV conversion module for vlc
  *****************************************************************************
  * Copyright (C) 2002 VLC authors and VideoLAN
- * $Id$
+ * $Id: 7d2c469128180e8a7721c90f6cb8bf6044da96f6 $
  *
  * Authors: Samuel Hocevar <sam@zoy.org>
  *          Damien Fouilleul <damienf@videolan.org>

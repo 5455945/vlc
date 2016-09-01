@@ -2,7 +2,7 @@
  * bookmarks.hpp : bookmarks
  ****************************************************************************
  * Copyright (C) 2006 the VideoLAN team
- * $Id$
+ * $Id: 17c7bdee98df204b998517f011ae89b91bf56348 $
  *
  * Authors: Antoine Lejeune <phytos@via.ecp.fr>
  *
@@ -35,6 +35,8 @@ class QPushButton;
 class BookmarksDialog : public QVLCFrame, public Singleton<BookmarksDialog>
 {
     Q_OBJECT
+public:
+    void toggleVisible();
 private:
     BookmarksDialog( intf_thread_t * );
     virtual ~BookmarksDialog();

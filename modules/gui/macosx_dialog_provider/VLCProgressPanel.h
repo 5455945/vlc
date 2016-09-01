@@ -2,7 +2,7 @@
  * VLCProgressPanel.h: A Generic Progress Indicator Panel created for VLC
  *****************************************************************************
  * Copyright (C) 2009-2010 VLC authors and VideoLAN
- * $Id$
+ * $Id: ec3ee67ecb11eafb5ad892aa970696108be4af38 $
  *
  * Authors: Felix Paul Kühne <fkuehne at videolan dot org>
  *

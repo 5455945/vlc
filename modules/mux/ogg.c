@@ -2,7 +2,7 @@
  * ogg.c: ogg muxer module for vlc
  *****************************************************************************
  * Copyright (C) 2001, 2002, 2006 VLC authors and VideoLAN
- * $Id$
+ * $Id: c71662a162e2ee4ed2bca182233204c93382dc69 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *          Gildas Bazin <gbazin@videolan.org>
@@ -763,7 +763,7 @@ static void OggGetSkeletonFisbone( uint8_t **pp_buffer, long *pi_size,
             break;
         default:
             psz_value = "application/octet-stream";
-            msg_Warn( p_mux, "Unkown fourcc for stream %s, setting Content-Type to %s",
+            msg_Warn( p_mux, "Unknown fourcc for stream %s, setting Content-Type to %s",
                   vlc_fourcc_GetDescription( p_stream->i_cat, p_stream->i_fourcc ),
                   psz_value );
     }
@@ -908,7 +908,7 @@ static int32_t OggFillDsHeader( uint8_t *p_buffer, oggds_header_t *p_oggds_heade
     /* extra header */
     if( p_oggds_header->i_size > 0 )
     {
-        memcpy( &p_buffer[index], p_oggds_header + sizeof(*p_oggds_header), p_oggds_header->i_size );
+        memcpy( &p_buffer[index], (uint8_t *) p_oggds_header + sizeof(*p_oggds_header), p_oggds_header->i_size );
         index += p_oggds_header->i_size;
     }
 

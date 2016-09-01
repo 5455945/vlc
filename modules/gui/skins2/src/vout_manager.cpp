@@ -2,7 +2,7 @@
  * vout_manager.cpp
  *****************************************************************************
  * Copyright (C) 2009 the VideoLAN team
- * $Id$
+ * $Id: f6ea8eb50df778350039d75ba0f8ea197adb35bf $
  *
  * Authors: Erwan Tulou <brezhoneg1 at yahoo.fr>
  *

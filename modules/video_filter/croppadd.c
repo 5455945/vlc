@@ -2,7 +2,7 @@
  * croppadd.c: Crop/Padd image filter
  *****************************************************************************
  * Copyright (C) 2008 VLC authors and VideoLAN
- * $Id$
+ * $Id: 2ed34cd03130a09876ead1f0c5693937e96c9240 $
  *
  * Authors: Antoine Cellerier <dionoea @t videolan dot org>
  *

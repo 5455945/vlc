@@ -2,7 +2,7 @@
  * csa.h
  *****************************************************************************
  * Copyright (C) 2004 Laurent Aimar
- * $Id$
+ * $Id: 2e380e73093a52c6d10c401f4a285670052ab2cc $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

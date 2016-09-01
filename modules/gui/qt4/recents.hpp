@@ -2,7 +2,7 @@
  * recents.hpp : Recents MRL (menu)
  *****************************************************************************
  * Copyright © 2008-2014 VideoLAN and VLC authors
- * $Id$
+ * $Id: 77c86204735c62a510dbacd6bb1aac56a95c2c28 $
  *
  * Authors: Ludovic Fauvet <etix@l0cal.com>
  *          Jean-baptiste Kempf <jb@videolan.org>

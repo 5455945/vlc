@@ -2,7 +2,7 @@
  * dummy.c
  *****************************************************************************
  * Copyright (C) 2001, 2002, 2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8b2e6bc4c1673ae249d369445e04618c68e257e2 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *

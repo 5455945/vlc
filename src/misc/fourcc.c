@@ -202,6 +202,7 @@ static const staticentry_t p_list_video[] = {
         E("DP02", "DynaPel MPEG-4 codec"),
         E("PLV1", "Pelco DVR MPEG-4"),
         E("QMP4", "QNAP Systems MPEG-4"),
+        E("qMP4", "QNAP Systems MPEG-4"),
         /* 3ivx delta 3.5 Unsupported
          * putting it here gives extreme distorted images */
         //E("3IV1", "3ivx delta 3.5 MPEG-4 Video"),
@@ -273,6 +274,7 @@ static const staticentry_t p_list_video[] = {
         A("H265"),
         A("x265"),
         A("hev1"),
+        A("HM10"),
 
     /* h264 */
     B(VLC_CODEC_H264, "H264 - MPEG-4 AVC (part 10)"),

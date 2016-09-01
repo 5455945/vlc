@@ -2,7 +2,7 @@
  * rawaud.c : raw audio input module for vlc
  *****************************************************************************
  * Copyright (C) 2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 9dd6da644b8f0cc0c8670b799b8aaa6ecfbc3cb2 $
  *
  * Authors: Jarmo Torvinen <jarmo.torvinen@jutel.fi>
  *

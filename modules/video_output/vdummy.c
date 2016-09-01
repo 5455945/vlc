@@ -2,7 +2,7 @@
  * vdummy.c: Dummy video output display method for testing purposes
  *****************************************************************************
  * Copyright (C) 2000-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 94d1255fef952d3cf6cfdfd337c94b2f5e5c096a $
  *
  * Authors: Samuel Hocevar <sam@zoy.org>
  *

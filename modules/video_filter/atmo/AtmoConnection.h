@@ -4,7 +4,7 @@
  *
  * See the README.txt file for copyright information and how to reach the author(s).
  *
- * $Id$
+ * $Id: 6bca50519a6ecd5aaca77005ddd99e6c563b0576 $
  */
 #ifndef _AtmoConnection_h_
 #define _AtmoConnection_h_

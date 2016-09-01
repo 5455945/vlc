@@ -2,7 +2,7 @@
  * main_interface.cpp : Main interface
  ****************************************************************************
  * Copyright (C) 2006-2011 VideoLAN and AUTHORS
- * $Id$
+ * $Id: 8c911e87c7874ab93b84d878e3aaa528e7339704 $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *          Jean-Baptiste Kempf <jb@videolan.org>
@@ -59,6 +59,8 @@
 #include <QLabel>
 #include <QStackedWidget>
 #include <QFileInfo>
+
+#include <QTimer>
 
 #include <vlc_keys.h>                       /* Wheel event */
 #include <vlc_vout_display.h>               /* vout_thread_t and VOUT_ events */
@@ -366,6 +368,79 @@ void MainInterface::reloadPrefs()
     }
 }
 
+void MainInterface::createResumePanel( QWidget *w )
+{
+    resumePanel = new QWidget( w );
+    resumePanel->hide();
+    QHBoxLayout *resumePanelLayout = new QHBoxLayout( resumePanel );
+    resumePanelLayout->setSpacing( 0 ); resumePanelLayout->setMargin( 0 );
+
+    QLabel *continuePixmapLabel = new QLabel();
+    continuePixmapLabel->setPixmap( QPixmap( ":/menu/help" ) );
+    continuePixmapLabel->setContentsMargins( 5, 0, 5, 0 );
+
+    QLabel *continueLabel = new QLabel( qtr( "Do you want to restart the playback where left off?") );
+
+    QToolButton *cancel = new QToolButton( resumePanel );
+    cancel->setAutoRaise( true );
+    cancel->setText( "X" );
+
+    QPushButton *ok = new QPushButton( qtr( "&Continue" )  );
+
+    resumePanelLayout->addWidget( continuePixmapLabel );
+    resumePanelLayout->addWidget( continueLabel );
+    resumePanelLayout->addStretch( 1 );
+    resumePanelLayout->addWidget( ok );
+    resumePanelLayout->addWidget( cancel );
+
+    resumeTimer = new QTimer( resumePanel );
+    resumeTimer->setSingleShot( true );
+    resumeTimer->setInterval( 6000 );
+
+    CONNECT( resumeTimer, timeout(), this, hideResumePanel() );
+    CONNECT( cancel, clicked(), this, hideResumePanel() );
+    CONNECT( THEMIM->getIM(), resumePlayback(int64_t), this, showResumePanel(int64_t) );
+    BUTTONACT( ok, resumePlayback() );
+
+    w->layout()->addWidget( resumePanel );
+}
+
+void MainInterface::showResumePanel( int64_t _time ) {
+    int setting = var_InheritInteger( p_intf, "qt-continue" );
+
+    if( setting == 0 )
+        return;
+
+    i_resumeTime = _time;
+
+    if( setting == 2)
+        resumePlayback();
+    else
+    {
+        resumePanel->setVisible(true);
+        resumeTimer->start();
+    }
+}
+
+void MainInterface::hideResumePanel()
+{
+    if( resumePanel->isVisible() )
+    {
+        if( !isFullScreen() && !isMaximized() )
+            resize( width(), height() - resumePanel->height() );
+        resumePanel->hide();
+        resumeTimer->stop();
+    }
+}
+
+void MainInterface::resumePlayback()
+{
+    if( THEMIM->getIM()->hasInput() ) {
+        var_SetTime( THEMIM->getInput(), "time", i_resumeTime );
+    }
+    hideResumePanel();
+}
+
 void MainInterface::createMainWidget( QSettings *creationSettings )
 {
     /* Create the main Widget and the mainLayout */
@@ -375,6 +450,7 @@ void MainInterface::createMainWidget( QSettings *creationSettings )
     main->setContentsMargins( 0, 0, 0, 0 );
     mainLayout->setSpacing( 0 ); mainLayout->setMargin( 0 );
 
+    createResumePanel( main );
     /* */
     stackCentralW = new QVLCStackedWidget( main );
 
@@ -691,6 +767,7 @@ void MainInterface::releaseVideoSlot( void )
     videoWidget->release();
     setVideoOnTop( false );
     setVideoFullScreen( false );
+    hideResumePanel();
 
     if( stackCentralW->currentWidget() == videoWidget )
         restoreStackOldWidget();
@@ -755,6 +832,9 @@ void MainInterface::setVideoFullScreen( bool fs )
          * qt-fullscreen-screennumber is forced) */
         setMinimalView( b_minimalView );
         setInterfaceFullScreen( b_interfaceFullScreen );
+#ifdef _WIN32
+        changeThumbbarButtons( THEMIM->getIM()->playingStatus() );
+#endif
     }
     videoWidget->sync();
 }

@@ -2,7 +2,7 @@
  * simple_channel_mixer.c : simple channel mixer plug-in using NEON assembly
  *****************************************************************************
  * Copyright (C) 2002, 2004, 2006-2009, 2012 VLC authors and VideoLAN
- * $Id$
+ * $Id: 8627415805726071359fcbbd0148f9ca034b9e30 $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *          David Geldreich <david.geldreich@free.fr>

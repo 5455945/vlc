@@ -2,7 +2,7 @@
  * dialogProvider.m: Minimal Dialog Provider for Mac OS X
  *****************************************************************************
  * Copyright (C) 2009-2011 VLC authors and VideoLAN
- * $Id$
+ * $Id: 2e78a72f82f42c4c1de129e9d26fc89987044945 $
  *
  * Authors: Felix Paul Kühne <fkuehne at videolan dot org>
  *          Pierre d'Herbemont <pdherbemont # videolan dot>

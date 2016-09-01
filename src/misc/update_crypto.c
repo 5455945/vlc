@@ -2,7 +2,7 @@
  * update_crypto.c: DSA related functions used for updating
  *****************************************************************************
  * Copyright © 2008-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: e7b11fb646218134782a7b35af49bfbac8d2b48f $
  *
  * Authors: Rafaël Carré <funman@videolanorg>
  *

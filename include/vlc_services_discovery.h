@@ -2,7 +2,7 @@
  * vlc_services_discovery.h : Services Discover functions
  *****************************************************************************
  * Copyright (C) 1999-2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: d9c231b28f3ec075343e0f8016792b8fa33f60f5 $
  *
  * Authors: Pierre d'Herbemont <pdherbemont # videolan.org>
  *

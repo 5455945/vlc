@@ -2,7 +2,7 @@
  * description.c: description stream output module (gathers ES info)
  *****************************************************************************
  * Copyright (C) 2003-2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 05f76ced765cea6b587b0e503c7f653e8aa043df $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *

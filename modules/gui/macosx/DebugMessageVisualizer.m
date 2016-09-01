@@ -2,7 +2,7 @@
  * DebugMessageVisualizer.m: Mac OS X interface crash reporter
  *****************************************************************************
  * Copyright (C) 2004-2013 VLC authors and VideoLAN
- * $Id$
+ * $Id: 5fdeaaffae7941a4785dc27a48a1cce1ba42bb8e $
  *
  * Authors: Felix Paul Kühne <fkuehne at videolan dot org>
  *          Pierre d'Herbemont <pdherbemont # videolan org>

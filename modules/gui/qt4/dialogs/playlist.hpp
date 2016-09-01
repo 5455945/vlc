@@ -2,7 +2,7 @@
  * playlist.hpp: Playlist dialog
  ****************************************************************************
  * Copyright (C) 2006 the VideoLAN team
- * $Id$
+ * $Id: f7a2e49f3017f0b90b0a815fd53b3e94416b78b0 $
  *
  * Authors: Clément Stenac <zorglub@videolan.org>
  *

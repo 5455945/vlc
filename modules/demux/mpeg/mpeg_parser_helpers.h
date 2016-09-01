@@ -2,7 +2,7 @@
  * packetizer_helper.h: Packetizer helpers
  *****************************************************************************
  * Copyright (C) 2014 VLC authors and VideoLAN
- * $Id$
+ * $Id: f8522e8a3da9a93a4132297a7997056590ebe78f $
  *
  * Authors: Denis Charmet <typx@videolan.org>
  *

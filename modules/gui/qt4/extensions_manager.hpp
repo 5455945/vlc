@@ -2,7 +2,7 @@
  * extensions_manager.hpp: Extensions manager for Qt
  ****************************************************************************
  * Copyright (C) 2009-2010 VideoLAN and authors
- * $Id$
+ * $Id: 729c9378387359e6963e3dd8b1167134d73b6fee $
  *
  * Authors: Jean-Philippe André < jpeg # videolan.org >
  *
@@ -78,7 +78,7 @@ public slots:
 
 private slots:
     void triggerMenu( int id );
-    void inputChanged( input_thread_t *p_input );
+    void inputChanged( );
     void playingChanged( int );
     void metaChanged( input_item_t *p_input );
 

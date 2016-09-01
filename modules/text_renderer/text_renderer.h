@@ -2,7 +2,7 @@
  * text_renderer.h : fonts, text styles helpers
  *****************************************************************************
  * Copyright (C) 2002 - 2013 VLC authors and VideoLAN
- * $Id$
+ * $Id: 721dcae3c626f4aee13cbabe62eb4b97acb87d05 $
  *
  * Authors: Sigmund Augdal Helberg <dnumgis@videolan.org>
  *          Gildas Bazin <gbazin@videolan.org>

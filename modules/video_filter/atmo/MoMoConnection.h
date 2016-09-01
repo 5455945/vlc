@@ -4,7 +4,7 @@
  *
  * See the README.txt file for copyright information and how to reach the author(s).
  *
- * $Id$
+ * $Id: 5fd094194b033eb753d9a7074bd15b1d3362e4ed $
  */
 #ifndef _MoMoConnection_h_
 #define _MoMoConnection_h_

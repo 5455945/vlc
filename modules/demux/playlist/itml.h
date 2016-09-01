@@ -2,7 +2,7 @@
  * itml.h : iTunes Music Library import functions
  *******************************************************************************
  * Copyright (C) 2007 VLC authors and VideoLAN
- * $Id$
+ * $Id: 213e2a598aeb34245081faad43677c801143353f $
  *
  * Authors: Yoann Peronneau <yoann@videolan.org>
  *

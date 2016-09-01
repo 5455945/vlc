@@ -2,7 +2,7 @@
  * utils.c: misc. stuff
  *****************************************************************************
  * Copyright (C) 1996-2012 VLC authors and VideoLAN
- * $Id$
+ * $Id: 7189d1aa4ce9dcbac98420ed9ae1d162e667af62 $
  *
  * Author: Frédéric Yhuel <fyhuel _AT_ viotech _DOT_ net>
  *

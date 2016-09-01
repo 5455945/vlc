@@ -2,7 +2,7 @@
  * directsound.c: DirectSound audio output plugin for VLC
  *****************************************************************************
  * Copyright (C) 2001-2009 VLC authors and VideoLAN
- * $Id$
+ * $Id: 88326d01869e066968049e3e028d20e640e4ac68 $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *
@@ -70,7 +70,7 @@ static const char *const speaker_list[] = { "Windows default", "Mono", "Stereo",
 vlc_module_begin ()
     set_description( N_("DirectX audio output") )
     set_shortname( "DirectX" )
-    set_capability( "audio output", 100 )
+    set_capability( "audio output", 200 )
     set_category( CAT_AUDIO )
     set_subcategory( SUBCAT_AUDIO_AOUT )
     add_shortcut( "directx", "aout_directx" )
@@ -147,19 +147,21 @@ static HRESULT TimeGet( aout_stream_sys_t *sys, mtime_t *delay )
     mtime_t size;
 
     hr = IDirectSoundBuffer_GetStatus( sys->p_dsbuffer, &status );
-    if(hr != DS_OK || !(status & DSBSTATUS_PLAYING))
-        return 1;
+    if( hr != DS_OK )
+        return hr;
+    if( !(status & DSBSTATUS_PLAYING) )
+        return DSERR_INVALIDCALL ;
 
     hr = IDirectSoundBuffer_GetCurrentPosition( sys->p_dsbuffer, &read, NULL );
     if( hr != DS_OK )
         return hr;
 
-    size = read - sys->i_last_read;
+    size = (mtime_t)read - sys->i_last_read;
 
     /* GetCurrentPosition cannot be trusted if the return doesn't change
      * Just return an error */
     if( size ==  0 )
-        return 1;
+        return DSERR_GENERIC ;
     else if( size < 0 )
       size += DS_BUF_SIZE;
 
@@ -547,9 +549,12 @@ static HRESULT Stop( aout_stream_sys_t *p_sys )
     vlc_mutex_lock( &p_sys->lock );
     p_sys->b_playing =  true;
     vlc_cond_signal( &p_sys->cond );
-    vlc_cancel( p_sys->eraser_thread );
     vlc_mutex_unlock( &p_sys->lock );
+    vlc_cancel( p_sys->eraser_thread );
     vlc_join( p_sys->eraser_thread, NULL );
+    vlc_cond_destroy( &p_sys->cond );
+    vlc_mutex_destroy( &p_sys->lock );
+
     if( p_sys->p_notify != NULL )
     {
         IDirectSoundNotify_Release(p_sys->p_notify );
@@ -629,6 +634,9 @@ static HRESULT Start( vlc_object_t *obj, aout_stream_sys_t *sys,
         i = 0;
     }
     free( psz_speaker );
+
+    vlc_mutex_init(&sys->lock);
+    vlc_cond_init(&sys->cond);
 
     if( AOUT_FMT_SPDIF( fmt ) && var_InheritBool( obj, "spdif" ) )
     {
@@ -766,12 +774,18 @@ static HRESULT Start( vlc_object_t *obj, aout_stream_sys_t *sys,
         }
     }
 
+    fmt->i_original_channels = fmt->i_physical_channels;
+
     int ret = vlc_clone(&sys->eraser_thread, PlayedDataEraser, (void*) obj,
                         VLC_THREAD_PRIORITY_LOW);
     if( unlikely( ret ) )
     {
         if( ret != ENOMEM )
             msg_Err( obj, "Couldn't start eraser thread" );
+
+        vlc_cond_destroy(&sys->cond);
+        vlc_mutex_destroy(&sys->lock);
+
         if( sys->p_notify != NULL )
         {
             IDirectSoundNotify_Release( sys->p_notify );
@@ -1086,9 +1100,6 @@ static int Open(vlc_object_t *obj)
     aout_DeviceReport(aout, dev);
     free(dev);
 
-    vlc_mutex_init(&sys->s.lock);
-    vlc_cond_init(&sys->s.cond);
-
     return VLC_SUCCESS;
 }
 
@@ -1096,8 +1107,6 @@ static void Close(vlc_object_t *obj)
 {
     audio_output_t *aout = (audio_output_t *)obj;
     aout_sys_t *sys = aout->sys;
-    vlc_cond_destroy( &sys->s.cond );
-    vlc_mutex_destroy( &sys->s.lock );
 
     var_Destroy(aout, "directx-audio-device");
     FreeLibrary(sys->hdsound_dll); /* free DSOUND.DLL */

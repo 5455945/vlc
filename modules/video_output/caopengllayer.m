@@ -2,7 +2,7 @@
  * caopengllayer.m: CAOpenGLLayer (Mac OS X) video output
  *****************************************************************************
  * Copyright (C) 2014 VLC authors and VideoLAN
- * $Id$
+ * $Id: 9ee27b97c130a686cc9c7b04f8a503dcb3e169ed $
  *
  * Authors: David Fuhrmann <david dot fuhrmann at googlemail dot com>
  *          Felix Paul Kühne <fkuehne at videolan dot org>

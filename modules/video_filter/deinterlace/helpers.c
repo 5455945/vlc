@@ -2,7 +2,7 @@
  * helpers.c : Generic helper functions for the VLC deinterlacer
  *****************************************************************************
  * Copyright (C) 2011 VLC authors and VideoLAN
- * $Id$
+ * $Id: 3d6e97e895e3955eae490e0906b79c27afa857fd $
  *
  * Author: Juha Jeronen <juha.jeronen@jyu.fi>
  *

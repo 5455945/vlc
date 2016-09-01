@@ -3,7 +3,7 @@
  *         using libcdio, libvcd and libvcdinfo
  *****************************************************************************
  * Copyright (C) 2003, 2004 VLC authors and VideoLAN
- * $Id$
+ * $Id: 586aabac036ec60961a589f26a743625013ef756 $
  *
  * Authors: Rocky Bernstein <rocky@panix.com>
  *

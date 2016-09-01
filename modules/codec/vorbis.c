@@ -5,7 +5,7 @@
  * Copyright (C) 2007 Société des arts technologiques
  * Copyright (C) 2007 Savoir-faire Linux
  *
- * $Id$
+ * $Id: 077a1c3becf6877ba00da410f44446a469a8aaf5 $
  *
  * Authors: Gildas Bazin <gbazin@videolan.org>
  *
@@ -318,7 +318,8 @@ static block_t *DecodeBlock( decoder_t *p_dec, block_t **pp_block )
     {
         if( ProcessHeaders( p_dec ) )
         {
-            block_Release( *pp_block );
+            if( *pp_block )
+                block_Release( *pp_block );
             return NULL;
         }
         p_sys->b_has_headers = true;

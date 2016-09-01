@@ -10,7 +10,7 @@
  * Functions prototyped are implemented in interface/mtime.c.
  *****************************************************************************
  * Copyright (C) 1996, 1997, 1998, 1999, 2000 VLC authors and VideoLAN
- * $Id$
+ * $Id: ab89a972120c8ee3f45d9823994eac584f8fe527 $
  *
  * Authors: Vincent Seguin <seguin@via.ecp.fr>
  *

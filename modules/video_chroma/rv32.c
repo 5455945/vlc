@@ -2,7 +2,7 @@
  * rv32.c: conversion plugin to RV32 format.
  *****************************************************************************
  * Copyright (C) 2005 VLC authors and VideoLAN
- * $Id$
+ * $Id: e74fa8d5278cad6452a3f608dbd058cc060679c3 $
  *
  * Author: Cyril Deguet <asmax@videolan.org>
  *

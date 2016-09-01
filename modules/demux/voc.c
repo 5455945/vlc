@@ -2,7 +2,7 @@
  * voc.c : Creative Voice File (.VOC) demux module for vlc
  *****************************************************************************
  * Copyright (C) 2005 Rémi Denis-Courmont
- * $Id$
+ * $Id: af4f1633daa07e418d6818d19fb78dce833dba04 $
  *
  * Authors: Rémi Denis-Courmont <rem # videolan.org>
  *

@@ -5,7 +5,7 @@
  *
  * See the README.txt file for copyright information and how to reach the author(s).
  *
- * $Id$
+ * $Id: dfbeaf35106a93e7bfee0d5d48fec571b682ee00 $
  */
 
 #ifndef _AtmoMultiConnection_h_

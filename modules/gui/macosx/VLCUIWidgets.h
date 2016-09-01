@@ -2,7 +2,7 @@
  * VLCUIWidgets.h: Widgets for VLC's extensions dialogs for Mac OS X
  *****************************************************************************
  * Copyright (C) 2009-2014 the VideoLAN team and authors
- * $Id$
+ * $Id: 548965dc46fba9121b007e04fe303735679f8d8b $
  *
  * Authors: Pierre d'Herbemont <pdherbemont # videolan dot>,
  *          Brendon Justin <brendonjustin@gmail.com>
