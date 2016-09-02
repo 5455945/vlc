@@ -2085,7 +2085,7 @@ else\
     [o_tableColumn setDataCell: o_dataCell];
     [o_tableColumn setWidth:s_rc.size.width - 34];
     [o_tableview addTableColumn: o_tableColumn];
-    [o_tableview registerForDraggedTypes:[NSArray arrayWithObject:@"VLC media player module"]];
+    [o_tableview registerForDraggedTypes:[NSArray arrayWithObject:@"i@free VLC media player module"]];
 
     [o_tableview setDataSource:self];
     [o_tableview setTarget: self];
@@ -2187,8 +2187,8 @@ else\
             return NO;
     }
 
-    [pb declareTypes:[NSArray arrayWithObject:@"VLC media player module"] owner:nil];
-    [pb setPropertyList:rows forType:@"VLC media player module"];
+    [pb declareTypes:[NSArray arrayWithObject:@"i@free VLC media player module"] owner:nil];
+    [pb setPropertyList:rows forType:@"i@free VLC media player module"];
     return YES;
 }
 
@@ -2222,7 +2222,7 @@ else\
 
         // Intra-table drag - data is the array of rows.
         if (!accepted && (array =
-            [pb propertyListForType:@"VLC media player module"]) != NULL) {
+            [pb propertyListForType:@"i@free VLC media player module"]) != NULL) {
             NSEnumerator *iter = nil;
             id val;
             BOOL isCopy = (srcMask & NSDragOperationMove) ? NO:YES;

@@ -365,7 +365,7 @@ int OpenEncoder( vlc_object_t *p_this )
         msg_Err( p_enc, "cannot find encoder %s\n"
 "*** Your Libav/FFmpeg installation is crippled.   ***\n"
 "*** Please check with your Libav/FFmpeg packager. ***\n"
-"*** This is NOT a VLC media player issue.   ***", psz_namecodec );
+"*** This is NOT a i@free VLC media player issue.   ***", psz_namecodec );
 
         dialog_Fatal( p_enc, _("Streaming / Transcoding failed"), _(
 /* I have had enough of all these MPEG-3 transcoding bug reports.
@@ -376,7 +376,7 @@ int OpenEncoder( vlc_object_t *p_this )
 "%s.\n"
 "If you don't know how to fix this, ask for support from your distribution.\n"
 "\n"
-"This is not an error inside VLC media player.\n"
+"This is not an error inside i@free VLC media player.\n"
 "Do not contact the VideoLAN project about this issue.\n"),
             psz_namecodec );
         return VLC_EGENERIC;

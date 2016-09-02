@@ -345,7 +345,7 @@ static VLCMainMenu *_o_sharedInstance = nil;
 - (void)initStrings
 {
     /* main menu */
-    [o_mi_about setTitle: [_NS("About VLC media player") \
+    [o_mi_about setTitle: [_NS("About i@free VLC media player") \
                            stringByAppendingString: @"..."]];
     [o_mi_checkForUpdate setTitle: _NS("Check for Update...")];
     [o_mi_prefs setTitle: _NS("Preferences...")];
@@ -491,11 +491,11 @@ static VLCMainMenu *_o_sharedInstance = nil;
     [o_mi_bring_atf setTitle: _NS("Bring All to Front")];
 
     [o_mu_help setTitle: _NS("Help")];
-    [o_mi_help setTitle: _NS("VLC media player Help...")];
+    [o_mi_help setTitle: _NS("i@free VLC media player Help...")];
     [o_mi_readme setTitle: _NS("ReadMe / FAQ...")];
     [o_mi_license setTitle: _NS("License")];
     [o_mi_documentation setTitle: _NS("Online Documentation...")];
-    [o_mi_website setTitle: _NS("VideoLAN Website...")];
+    [o_mi_website setTitle: _NS("i@free Website...")];
     [o_mi_donation setTitle: _NS("Make a donation...")];
     [o_mi_forum setTitle: _NS("Online Forum...")];
 

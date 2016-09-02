@@ -33,7 +33,7 @@
 #include <vlc_interface.h>
 #include <vlc_charset.h>
 
-#define VLCSERVICENAME "VLC media player"
+#define VLCSERVICENAME "i@free VLC media player"
 
 /*****************************************************************************
  * Module descriptor

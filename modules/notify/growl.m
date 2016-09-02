@@ -278,7 +278,7 @@ static int ItemChange( vlc_object_t *p_this, const char *psz_var,
 
 - (void)registerToGrowl
 {
-    o_applicationName = [[NSString alloc] initWithUTF8String: _( "VLC media player" )];
+    o_applicationName = [[NSString alloc] initWithUTF8String: _( "i@free VLC media player" )];
     o_notificationType = [[NSString alloc] initWithUTF8String: _( "New input playing" )];
 
     NSAutoreleasePool *o_pool = [[NSAutoreleasePool alloc] init];

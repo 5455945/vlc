@@ -279,7 +279,7 @@ static int Open (vout_window_t *wnd, const vout_window_cfg_t *cfg)
        The limitation is partially with ICCCM and partially with VLC.
        For Latin script languages, you may need to strip accents.
        For other scripts, you will need to transliterate into Latin. */
-                    vlc_pgettext ("ASCII", "VLC media player"));
+                    vlc_pgettext ("ASCII", "i@free VLC media player"));
 
     set_ascii_prop (conn, window, XA_WM_ICON_NAME,
     /* xgettext: This is a plain ASCII spelling of "VLC"
@@ -310,7 +310,7 @@ static int Open (vout_window_t *wnd, const vout_window_cfg_t *cfg)
         free (title);
     }
     else
-        set_string (conn, window, utf8, net_wm_name, _("VLC media player"));
+        set_string (conn, window, utf8, net_wm_name, _("i@free VLC media player"));
 
     xcb_atom_t net_wm_icon_name = get_atom (conn, net_wm_icon_name_ck);
     set_string (conn, window, utf8, net_wm_icon_name, _("VLC"));

@@ -1027,8 +1027,8 @@ static int OpenEncoder( vlc_object_t *p_this )
 
     /* Create and store headers */
     pp_header[0] = speex_header_to_packet( &p_sys->header, &pi_header[0] );
-    pp_header[1] = "ENCODER=VLC media player";
-    pi_header[1] = sizeof("ENCODER=VLC media player");
+    pp_header[1] = "ENCODER=i@free VLC media player";
+    pi_header[1] = sizeof("ENCODER=i@free VLC media player");
 
     p_enc->fmt_out.i_extra = 3 * 2 + pi_header[0] + pi_header[1];
     p_extra = p_enc->fmt_out.p_extra = xmalloc( p_enc->fmt_out.i_extra );

@@ -876,8 +876,8 @@ static inline char * __config_GetLabel(vlc_object_t *p_this, const char *psz_nam
     NSBeginInformationalAlertSheet(_NS("Reset Preferences"), _NS("Cancel"),
                                    _NS("Continue"), nil, [sender window], self,
                                    @selector(sheetDidEnd: returnCode: contextInfo:), NULL, nil, @"%@",
-                                   _NS("This will reset VLC media player's preferences.\n\n"
-                                       "Note that VLC will restart during the process, so your current "
+                                   _NS("This will reset i@free VLC media player's preferences.\n\n"
+                                       "Note that i@free VLC will restart during the process, so your current "
                                        "playlist will be emptied and eventual playback, streaming or "
                                        "transcoding activities will stop immediately.\n\n"
                                        "The Media Library will not be affected.\n\n"

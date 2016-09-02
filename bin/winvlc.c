@@ -142,8 +142,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
         static wchar_t path[MAX_PATH];
         if( S_OK != SHGetFolderPathW( NULL, CSIDL_APPDATA | CSIDL_FLAG_CREATE,
                     NULL, SHGFP_TYPE_CURRENT, path ) )
-            fprintf( stderr, "Can't open the vlc conf PATH\n" );
-        _snwprintf( path+wcslen( path ), MAX_PATH,  L"%s", L"\\vlc\\crashdump" );
+            fprintf( stderr, "Can't open the i@free vlc conf PATH\n" );
+        _snwprintf( path+wcslen( path ), MAX_PATH,  L"%s", L"\\i@free vlc\\crashdump" );
         crashdump_path = &path[0];
 
         check_crashdump();
@@ -156,7 +156,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
     if (!lang)
     {
         HKEY h_key;
-        if( RegOpenKeyEx( HKEY_CURRENT_USER, TEXT("Software\\VideoLAN\\VLC\\"), 0, KEY_READ, &h_key )
+        if( RegOpenKeyEx( HKEY_CURRENT_USER, TEXT("Software\\i@free\\i@free VLC\\"), 0, KEY_READ, &h_key )
                 == ERROR_SUCCESS )
         {
             TCHAR szData[256];
@@ -181,7 +181,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
     {
         libvlc_set_app_id (vlc, "org.VideoLAN.VLC", PACKAGE_VERSION,
                            PACKAGE_NAME);
-        libvlc_set_user_agent (vlc, "VLC media player", "VLC/"PACKAGE_VERSION);
+        libvlc_set_user_agent (vlc, "i@free VLC media player", "i@free VLC/"PACKAGE_VERSION);
         libvlc_add_intf (vlc, "hotkeys,none");
         libvlc_add_intf (vlc, "globalhotkeys,none");
         libvlc_add_intf (vlc, NULL);
@@ -190,9 +190,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
         libvlc_release (vlc);
     }
     else
-        MessageBox (NULL, TEXT("VLC media player could not start.\n"
+        MessageBox (NULL, TEXT("i@free VLC media player could not start.\n"
                     "Either the command line options were invalid or no plugins were found.\n"),
-                    TEXT("VLC media player"),
+                    TEXT("i@free VLC media player"),
                     MB_OK|MB_ICONERROR);
 
 
@@ -218,9 +218,9 @@ static void check_crashdump(void)
         return;
     fclose( fd );
 
-    int answer = MessageBox( NULL, L"Ooops: VLC media player just crashed.\n" \
+    int answer = MessageBox( NULL, L"Ooops: i@free VLC media player just crashed.\n" \
     "Would you like to send a bug report to the developers team?",
-    L"VLC crash reporting", MB_YESNO);
+    L"i@free VLC crash reporting", MB_YESNO);
 
     if(answer == IDYES)
     {
@@ -302,7 +302,7 @@ LONG WINAPI vlc_exception_filter(struct _EXCEPTION_POINTERS *lpExceptionInfo)
         osvi.dwOSVersionInfoSize = sizeof( OSVERSIONINFO );
         GetVersionEx( &osvi );
 
-        fwprintf( fd, L"[version]\nOS=%d.%d.%d.%d.%ls\nVLC=" VERSION_MESSAGE,
+        fwprintf( fd, L"[version]\nOS=%d.%d.%d.%d.%ls\ni@free VLC=" VERSION_MESSAGE,
                 osvi.dwMajorVersion, osvi.dwMinorVersion, osvi.dwBuildNumber,
                 osvi.dwPlatformId, osvi.szCSDVersion);
 

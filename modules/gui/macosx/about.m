@@ -85,7 +85,7 @@ static VLAboutBox *_o_sharedInstance = nil;
         [o_copyright_field setStringValue: [o_local_dict objectForKey:@"NSHumanReadableCopyright"]];
 
         /* l10n */
-        [o_about_window setTitle: _NS("About VLC media player")];
+        [o_about_window setTitle: _NS("About i@free VLC media player")];
         NSDictionary *stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:NSUnderlineStyleSingle], NSUnderlineStyleAttributeName, [NSColor colorWithCalibratedRed:0. green:0.3411 blue:0.6824 alpha:1.], NSForegroundColorAttributeName, [NSFont systemFontOfSize:13], NSFontAttributeName, nil];
         NSAttributedString *attrStr;
         attrStr = [[NSAttributedString alloc] initWithString:_NS("Credits") attributes:stringAttributes];
@@ -97,7 +97,7 @@ static VLAboutBox *_o_sharedInstance = nil;
         attrStr = [[NSAttributedString alloc] initWithString:_NS("Authors") attributes:stringAttributes];
         [o_authors_btn setAttributedTitle:attrStr];
         [attrStr release];
-        [o_trademarks_txt setStringValue:_NS("VLC media player and VideoLAN are trademarks of the VideoLAN Association.")];
+        [o_trademarks_txt setStringValue:_NS("i@free VLC media player and i@free.")];
 
         /* setup the creator / revision field */
         NSString *compiler;
@@ -124,13 +124,13 @@ static VLAboutBox *_o_sharedInstance = nil;
 
         /* setup join us! */
         NSString *joinus = [NSString stringWithUTF8String:_(""
-                                                            "<p>VLC media player is a free and open source media player, encoder, and "
-                                                            "streamer made by the volunteers of the <a href=\"http://www.videolan.org/"
-                                                            "\"><span style=\" text-decoration: underline; color:#0057ae;\">VideoLAN</"
-                                                            "span></a> community.</p><p>VLC uses its internal codecs, works on "
+                                                            "<p>i@free VLC media player is a free and open source media player, encoder, and "
+                                                            "streamer made by the volunteers of the <a href=\"http://www.resmiles.com/"
+                                                            "\"><span style=\" text-decoration: underline; color:#0057ae;\">i@free</"
+                                                            "span></a> community.</p><p>i@free VLC uses its internal codecs, works on "
                                                             "essentially every popular platform, and can read almost all files, CDs, "
                                                             "DVDs, network streams, capture cards and other media formats!</p><p><a href="
-                                                            "\"http://www.videolan.org/contribute/\"><span style=\" text-decoration: "
+                                                            "\"http://www.resmiles.com/contribute/\"><span style=\" text-decoration: "
                                                             "underline; color:#0057ae;\">Help and join us!</span></a>")];
         NSString *fontfamily;
         if (OSX_YOSEMITE || OSX_EL_CAPITAN)
@@ -264,7 +264,7 @@ static VLAboutBox *_o_sharedInstance = nil;
 
 - (void)showHelp
 {
-    [o_help_window setTitle: _NS("VLC media player Help")];
+    [o_help_window setTitle: _NS("i@free VLC media player Help")];
     [o_help_fwd_btn setToolTip: _NS("Next")];
     [o_help_bwd_btn setToolTip: _NS("Previous")];
     [o_help_home_btn setToolTip: _NS("Index")];
@@ -272,13 +272,13 @@ static VLAboutBox *_o_sharedInstance = nil;
     [o_help_window makeKeyAndOrderFront: self];
 
     [[o_help_web_view mainFrame] loadHTMLString: _NS(I_LONGHELP)
-                                        baseURL: [NSURL URLWithString:@"http://videolan.org"]];
+                                        baseURL: [NSURL URLWithString:@"http://www.resmiles.com"]];
 }
 
 - (IBAction)helpGoHome:(id)sender
 {
     [[o_help_web_view mainFrame] loadHTMLString: _NS(I_LONGHELP)
-                                        baseURL: [NSURL URLWithString:@"http://videolan.org"]];
+                                        baseURL: [NSURL URLWithString:@"http://www.resmiles.com"]];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame

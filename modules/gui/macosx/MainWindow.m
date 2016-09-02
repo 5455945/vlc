@@ -206,7 +206,7 @@ static VLCMainWindow *_o_sharedInstance = nil;
     else
         [self setContentMinSize:NSMakeSize(604., f_min_window_height)];
 
-    [self setTitle: _NS("VLC media player")];
+    [self setTitle: _NS("i@free VLC media player")];
 
     b_dropzone_active = YES;
     [o_dropzone_view setFrame: [o_playlist_table frame]];
@@ -739,13 +739,13 @@ static VLCMainWindow *_o_sharedInstance = nil;
 
             [o_fspanel setStreamTitle: aString];
         } else {
-            [self setTitle: _NS("VLC media player")];
+            [self setTitle: _NS("i@free VLC media player")];
             [self setRepresentedURL: nil];
         }
 
         vlc_object_release(p_input);
     } else {
-        [self setTitle: _NS("VLC media player")];
+        [self setTitle: _NS("i@free VLC media player")];
         [self setRepresentedURL: nil];
     }
 }
@@ -1369,7 +1369,7 @@ static VLCMainWindow *_o_sharedInstance = nil;
         NSRect winrect = [self frame];
         CGFloat f_titleBarHeight = [o_titlebar_view frame].size.height;
 
-        [self setTitle: _NS("VLC media player")];
+        [self setTitle: _NS("i@free VLC media player")];
         [o_titlebar_view setFrame: NSMakeRect(0, winrect.size.height - f_titleBarHeight, winrect.size.width, f_titleBarHeight)];
         [[self contentView] addSubview: o_titlebar_view positioned: NSWindowAbove relativeTo: nil];
 

@@ -48,7 +48,7 @@
 static int  Open    ( vlc_object_t * );
 static void Close   ( vlc_object_t * );
 
-#define APPLICATION_NAME "VLC media player"
+#define APPLICATION_NAME "i@free VLC media player"
 
 #define TIMEOUT_TEXT N_("Timeout (ms)")
 #define TIMEOUT_LONGTEXT N_("How long the notification will be displayed ")

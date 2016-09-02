@@ -748,7 +748,7 @@ SPrefsPanel::SPrefsPanel( intf_thread_t *_p_intf, QWidget *_parent,
 
             HKEY h_key;
             char *langReg = NULL;
-            if( RegOpenKeyEx( HKEY_CURRENT_USER, TEXT("Software\\VideoLAN\\VLC\\"), 0, KEY_READ, &h_key )
+            if( RegOpenKeyEx( HKEY_CURRENT_USER, TEXT("Software\\i@free\\i@free VLC\\"), 0, KEY_READ, &h_key )
                     == ERROR_SUCCESS )
             {
                 TCHAR szData[256];
@@ -763,9 +763,9 @@ SPrefsPanel::SPrefsPanel( intf_thread_t *_p_intf, QWidget *_parent,
 
 //            ui.defaultLabel->setFont( italicFont );
             ui.skinsLabel->setText(
-                    qtr( "This is VLC's skinnable interface. You can download other skins at" )
-                    + QString( " <a href=\"http://www.videolan.org/vlc/skins.php\">" )
-                    + qtr( "VLC skins website" )+ QString( "</a>." ) );
+                    qtr( "This is i@free VLC's skinnable interface. You can download other skins at" )
+                    + QString( " <a href=\"http://www.resmiles/vlc/skins.php\">" )
+                    + qtr( "i@free VLC skins website" )+ QString( "</a>." ) );
             ui.skinsLabel->setFont( italicFont );
 
 #ifdef _WIN32
@@ -1223,9 +1223,9 @@ void SPrefsPanel::configML()
 
 void SPrefsPanel::cleanLang() {
     QVLCRegistry *qvReg = new QVLCRegistry( HKEY_CURRENT_USER );
-    qvReg->DeleteValue( "Software\\VideoLAN\\VLC\\", "Lang" );
-    qvReg->DeleteKey( "Software\\VideoLAN\\", "VLC" );
-    qvReg->DeleteKey( "Software\\", "VideoLAN" );
+    qvReg->DeleteValue( "Software\\i@free\\i@free VLC\\", "Lang" );
+    qvReg->DeleteKey( "Software\\i@free\\", "i@free VLC" );
+    qvReg->DeleteKey( "Software\\", "i@free" );
     delete qvReg;
 }
 
@@ -1238,7 +1238,7 @@ void SPrefsPanel::saveLang() {
     else
     {
         QVLCRegistry *qvReg = new QVLCRegistry( HKEY_CURRENT_USER );
-        qvReg->WriteRegistryString( "Software\\VideoLAN\\VLC\\", "Lang", lang );
+        qvReg->WriteRegistryString( "Software\\i@free\\i@free VLC\\", "Lang", lang );
     }
 }
 
@@ -1246,7 +1246,7 @@ bool SPrefsPanel::addType( const char * psz_ext, QTreeWidgetItem* current,
                            QTreeWidgetItem* parent, QVLCRegistry *qvReg )
 {
     bool b_temp;
-    const char* psz_VLC = "VLC";
+    const char* psz_VLC = "i@free VLC";
     current = new QTreeWidgetItem( parent, QStringList( psz_ext ) );
 
     if( strstr( qvReg->ReadRegistryString( psz_ext, "", "" ), psz_VLC ) )
@@ -1291,7 +1291,7 @@ void SPrefsPanel::assoDialog()
             IApplicationAssociationRegistrationUI *p_regui =
                 (IApplicationAssociationRegistrationUI *)p;
 
-            hr = p_regui->LaunchAdvancedAssociationUI(L"VLC" );
+            hr = p_regui->LaunchAdvancedAssociationUI(L"i@free VLC" );
             p_regui->Release();
         }
         CoUninitialize();
@@ -1457,7 +1457,7 @@ void addAsso( QVLCRegistry *qvReg, const char *psz_ext )
 
         /* Get the installer path */
         QVLCRegistry *qvReg2 = new QVLCRegistry( HKEY_LOCAL_MACHINE );
-        QString str_temp = qvReg2->ReadRegistryString( "Software\\VideoLAN\\VLC", "", "" );
+        QString str_temp = qvReg2->ReadRegistryString( "Software\\i@free\\i@free VLC", "", "" );
 
         if( str_temp.size() )
         {

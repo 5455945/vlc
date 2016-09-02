@@ -818,7 +818,7 @@ static void *Run(void *data)
             "Connection: close\n"
             "Content-type: application/x-www-form-urlencoded\n"
             "Host: %s\n"
-            "User-agent: VLC media player/"VERSION"\r\n"
+            "User-agent: i@free VLC media player/"VERSION"\r\n"
             "\r\n"
             "%s\r\n"
             "\r\n",

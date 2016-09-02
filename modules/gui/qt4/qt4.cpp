@@ -82,11 +82,11 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 
 #define SYSTRAY_TEXT N_( "Systray icon" )
 #define SYSTRAY_LONGTEXT N_( "Show an icon in the systray " \
-                             "allowing you to control VLC media player " \
+                             "allowing you to control i@free VLC media player " \
                              "for basic actions." )
 
-#define MINIMIZED_TEXT N_( "Start VLC with only a systray icon" )
-#define MINIMIZED_LONGTEXT N_( "VLC will start with just an icon in " \
+#define MINIMIZED_TEXT N_( "Start i@free VLC with only a systray icon" )
+#define MINIMIZED_LONGTEXT N_( "i@free VLC will start with just an icon in " \
                                "your taskbar" )
 
 #define KEEPSIZE_TEXT N_( "Resize interface to the native video size" )
